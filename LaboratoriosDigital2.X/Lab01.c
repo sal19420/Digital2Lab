@@ -34,8 +34,8 @@
 
          
 //********VARIABLE**************
- uint8_t tabla [16] = { 0X3F, 0X06, 0X5B, 0X4F, 0X66, 0X6D, 0X7D, 0X07, 0X7F, 0X67,
- 0X77, 0X7C, 0X39, 0X5E, 0X79, 0X71 };
+ uint8_t tabla [16] = {0X3F, 0X06, 0X5B, 0X4F, 0X66, 0X6D, 0X7D, 0X07, 0X7F, 0X67,
+ 0X77, 0X7C, 0X39, 0X5E, 0X79, 0X71};
  
  uint8_t banderas;
  uint8_t contador;
@@ -75,13 +75,17 @@
     }
     
     //Interupcion on change del puerto B
-    if (RBIF == 1){                 //Contador
+    if (RBIF == 1){    //Contador
+        
+        
         if (RB0 == 1){              //Verificamos cual boton se presiona
-            contador++;                //Si es RB0 incrementamos
+            contador++;   //Si es RB0 incrementamos
+            PORTC = contador;
         }
         
         if (RB1 == 1){              //Si es RB1 decrementamos
             contador--;
+            PORTC = contador; 
         }
         
         INTCONbits.RBIF = 0;        //Reiniciamos la interupción
@@ -118,13 +122,15 @@ void main(void) {
         }                               //Luego le volvemos a indicar que inicie la conversion
         
         LH(ADC);
+       
         
-        if (ADC > contador) {
-            PORTCbits.RC0 = 1;
+        if (ADC == contador) {
+            PORTEbits.RE0 = 1;
+           
         }
         
         else {
-            PORTCbits.RC0 = 0;
+            PORTEbits.RE0 = 0;
         }
         
              
@@ -141,11 +147,13 @@ void config(void) {
     TRISC   = 0X00;             //PORTB, el PORTC y PORTD como salidas
     TRISD   = 0X00;
     TRISA   = 0X01;
+    TRISE   = 0X00;
     
     PORTA   = 0X00;
     PORTB   = 0X00;
     PORTC   = 0X00;
     PORTD   = 0X00;
+    PORTE   = 0x00;
     
     //Configuracion del Oscilador
     config_osc(7);

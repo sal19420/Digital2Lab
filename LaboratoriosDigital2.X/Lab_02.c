@@ -64,17 +64,17 @@ void main(void) {
     Lcd_Set_Cursor(1,1);
     Lcd_Write_String("www.electroSome.com");
 
-    for(a=0;a<15;a++)
-    {
-        __delay_ms(300);
-        Lcd_Shift_Left();
-    }
-
-    for(a=0;a<15;a++)
-    {
-        __delay_ms(300);
-        Lcd_Shift_Right();
-    }
+//    for(a=0;a<15;a++)
+//    {
+//        __delay_ms(300);
+//        Lcd_Shift_Left();
+//    }
+//
+//    for(a=0;a<15;a++)
+//    {
+//        __delay_ms(300);
+//        Lcd_Shift_Right();
+//    }
 
     Lcd_Clear();
     Lcd_Set_Cursor(2,1);

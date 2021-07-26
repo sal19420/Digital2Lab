@@ -28,69 +28,96 @@
 #include <stdlib.h>
 #include "Librerias.h"
 
-#define __XTAL_FREQ 8000000 
-#define __tmr0_value 217
-#define RS RD2
-#define EN RD3
-#define D4 RD4
-#define D5 RB5
-#define D6 RD6
-#define D7 RD7
+#define _XTAL_FREQ 8000000 
+#define _tmr0_value 217
 
 
+//**********Variables***********
+uint8_t canal_act = 0;
+volatile uint8_t var_adc0 = 0;
+volatile uint8_t var_adc1 = 0;
+float cont_uart = 0;
+char string_uart[10];
+char valor_uart = 0;
+char adc0[10];
+char adc1[10];
+float conv0 = 0;
+float conv1 = 0;
  //**********Prototipos*********
  void config(void);
 
 void main(void) {
     config();
-  unsigned int a;
-  TRISD = 0x00;
   Lcd_Init();
+   start_adc(2, 0, 0, 0); //Fosc/8, No ISR de ADC, Ref Vdd y Vcc, a la izquierda
+    start_ch(0); //Habilita el pin del Puerto RB0.
+    start_ch(1); //Habilita el pin del Puerto RB1.
+    Select_ch(0); //Selecciona el canal e inicia la conversion.
+    Lcd_Clear();
   while(1)
   {
-    Lcd_Clear();
-    Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("LCD Library for");
-    Lcd_Set_Cursor(2,1);
-    Lcd_Write_String("MPLAB XC8");
-    __delay_ms(2000);
-    Lcd_Clear();
-    Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("Developed By");
-    Lcd_Set_Cursor(2,1);
-    Lcd_Write_String("electroSome");
-    __delay_ms(2000);
-    Lcd_Clear();
-    Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("www.electroSome.com");
+      Lcd_Set_Cursor(1, 1);
+        Lcd_Write_String("S1:");
+        Lcd_Set_Cursor(1, 8);
+        Lcd_Write_String("S2:");
+        Lcd_Set_Cursor(1, 15);
+        Lcd_Write_String("S3:");
+        if (PIR1bits.ADIF == 1) {
+            if (canal_act == 0) {
+                var_adc0 = ADRESH; //se guarda el valor convertido en la variable
+                Select_ch(0);
+                canal_act++;
+            } else {
+                var_adc1 = ADRESH; //se guarda el valor convertido en la variable
+                Select_ch(1);
+                canal_act--;
+            }
+            PIR1bits.ADIF = 0;
+        }
+  
 
-    for(a=0;a<15;a++)
-    {
-        __delay_ms(300);
-        Lcd_Shift_Left();
-    }
+//    for(a=0;a<15;a++)
+//    {
+//        __delay_ms(300);
+//        Lcd_Shift_Left();
+//    }
+//
+//    for(a=0;a<15;a++)
+//    {
+//        __delay_ms(300);
+//        Lcd_Shift_Right();
+//    }
 
-    for(a=0;a<15;a++)
-    {
-        __delay_ms(300);
-        Lcd_Shift_Right();
-    }
+   
+    Lcd_Set_Cursor(2, 1);
+        Lcd_Write_String(adc0);
+        Lcd_Set_Cursor(2, 5);
+        Lcd_Write_String("V");
 
-    Lcd_Clear();
-    Lcd_Set_Cursor(2,1);
-    Lcd_Write_Char('H');
-    Lcd_Write_Char('o');
-    Lcd_Write_Char('l');
-    Lcd_Write_Char('a');
-    Lcd_Set_Cursor(1,1);
-    Lcd_Write_String("Hola Mundo");
-    __delay_ms(2000);
+        Lcd_Set_Cursor(2, 7);
+        Lcd_Write_String(adc1);
+        Lcd_Set_Cursor(2, 11);
+        Lcd_Write_String("V");
+
+//        Lcd_Set_Cursor(2, 15);
+//        Lcd_Write_String(string_uart);
+//        __delay_ms(20);
+    
+     conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
+     conv1 = 0;//tanto para la LCD como por UART.
+        
+        conv0 = (var_adc0 / (float) 255)*5; //Se consigue el porcentaje con respecto al valor 
+       //maximo que un puerto puede tener, despues se multiplica por 5 para conocer el voltaje actual del puerto                                          
+        convert(adc0, conv0, 2);//se convierte el valor actual a un valor ASCII.
+        
+        conv1 = (var_adc1 / (float) 255)*5; //misma logica que conv0
+        convert(adc1, conv1, 2);
   }
     return;
 }
 void config(void) {
     //Configuracion de los puertos
-    ANSEL   = 0X01;             //Colocamos RA0 como entrada analogica
+    ANSEL   = 0X00;             //Colocamos RA0 como entrada analogica
     ANSELH  = 0X00;             //PORTB, el PORTC y PORTD como salidas
     
                                  //Colocamos RA0 Y RA1 como entradas y el resto del
@@ -105,31 +132,32 @@ void config(void) {
     PORTE   = 0x00;
     
     //Configuracion del Oscilador
-    config_osc(7);
+        config_osc(7);
     //Configuracion TMR0
-    config_tmr0(7);
-    TMR0 = __tmr0_value;
+//    config_tmr0(7);
+//    TMR0 = _tmr0_value;
     
-    //Configuracion Interupciones
-    INTCONbits.GIE   = 1;       //Activamos las interupciones on change y del TMR0
-    INTCONbits.PEIE  = 1;
-    INTCONbits.T0IE  = 1;
-    INTCONbits.RBIE  = 1;
-    PIE1bits.ADIE    = 1;
-    
-    INTCONbits.T0IF  = 0;
-    INTCONbits.RBIF  = 0;
-    PIR1bits.ADIF    = 0;
-    
-     //Configuracion ADC
-    ADCON1bits.ADFM     = 0;    //Justificado a la izquierda
-    ADCON1bits.VCFG0    = 0;    //Colocamos los voltajes de ref como VSS y VDD
-    ADCON1bits.VCFG1    = 0;
-    
-    ADCON0bits.ADCS1    = 1;    //Reloj de conversion como FOSC/32
-    ADCON0bits.CHS      = 0;    //Chanel 0
-    __delay_ms(200);
-    ADCON0bits.ADON     = 1;    //Encendemos el ADC
-    __delay_ms(200);
-    
+//    //Configuracion Interupciones
+//    INTCONbits.GIE   = 1;       //Activamos las interupciones on change y del TMR0
+//    INTCONbits.PEIE  = 1;
+//    INTCONbits.T0IE  = 1;
+//    INTCONbits.RBIE  = 1;
+//    PIE1bits.ADIE    = 1;
+//    
+//    INTCONbits.T0IF  = 0;
+//    INTCONbits.RBIF  = 0;
+//    PIR1bits.ADIF    = 0;
+//    
+//     //Configuracion ADC
+//    ADCON1bits.ADFM     = 0;    //Justificado a la izquierda
+//    ADCON1bits.VCFG0    = 0;    //Colocamos los voltajes de ref como VSS y VDD
+//    ADCON1bits.VCFG1    = 0;
+//    
+//    ADCON0bits.ADCS1    = 1;    //Reloj de conversion como FOSC/32
+//    ADCON0bits.CHS      = 0;    //Chanel 0
+//    __delay_ms(200);
+//    ADCON0bits.ADON     = 1;    //Encendemos el ADC
+//    __delay_ms(200);
+//   
+//    
 }

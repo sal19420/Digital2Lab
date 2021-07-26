@@ -1,7 +1,7 @@
-/* File:   Proyecto2.c
+/* File:  Lab01.c
  * Author: Josue Salazar
  *
- * Created on 25 de mayo de 2021, 12:16 PM
+ * Created on 18 de julio de 2021, 12:16 PM
  */
 
 
@@ -124,13 +124,13 @@ void main(void) {
         LH(ADC);
        
         
-        if (ADC == contador) {
-            PORTEbits.RE0 = 1;
+        if (ADC > contador) {
+            PORTEbits.RE0 = 0;
            
         }
         
         else {
-            PORTEbits.RE0 = 0;
+            PORTEbits.RE0 = 1;
         }
         
              

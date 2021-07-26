@@ -35,11 +35,54 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 
+#ifndef RS
+#define RS PORTDbits.RD2
+#endif
+
+#ifndef EN
+#define EN RD3
+#endif
+
+#ifndef D4
+#define D4 RD4
+#endif
+
+#ifndef D5
+#define D5 RD5
+#endif
+
+#ifndef D6
+#define D6 RD6
+#endif
+
+#ifndef D7
+#define D7 RD7
+#endif
+
 void config_osc(uint8_t frec);
 void config_tmr0(uint8_t prescaler);
 void config_ADC(uint8_t adcFrec);
 void pasar_ADC (uint8_t dato);
 void LH (uint8_t dato);
 void segmentos (uint8_t dato);
+
+void Lcd_Port(char a);
+
+void Lcd_Cmd(char a);
+
+void Lcd_Clear(void);
+
+void Lcd_Set_Cursor(char a, char b);
+
+void Lcd_Init(void);
+
+void Lcd_Write_Char(char a);
+
+void Lcd_Write_String(char *a);
+
+void Lcd_Shift_Right(void);
+
+void Lcd_Shift_Left(void);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

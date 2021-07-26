@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include "Librerias.h"
 #include "ADC.h"
+#include "LCD.h"
 
 #define _XTAL_FREQ 8000000 
 #define _tmr0_value 217

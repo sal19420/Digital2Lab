@@ -8,17 +8,17 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 
-#define RS PORTEbits.RE0
-#define EN PORTEbits.RE2
-#define RW PORTEbits.RE1    
-#define D0 PORTDbits.RD0
-#define D1 PORTDbits.RD1
-#define D2 PORTDbits.RD2
-#define D3 PORTDbits.RD3
-#define D4 PORTDbits.RD4
-#define D5 PORTDbits.RD5
-#define D6 PORTDbits.RD6
-#define D7 PORTDbits.RD7
+//#define RS PORTEbits.RE0
+//#define EN PORTEbits.RE2
+//#define RW PORTEbits.RE1    
+//#define D0 PORTDbits.RD0
+//#define D1 PORTDbits.RD1
+//#define D2 PORTDbits.RD2
+//#define D3 PORTDbits.RD3
+//#define D4 PORTDbits.RD4
+//#define D5 PORTDbits.RD5
+//#define D6 PORTDbits.RD6
+//#define D7 PORTDbits.RD7
 
 void config_osc(uint8_t frec);
 //void config_tmr0(uint8_t prescaler);
@@ -29,23 +29,23 @@ void config_osc(uint8_t frec);
 
 // LCD
 
-void Lcd_Port(char a);
-
-void Lcd_Cmd(char a);
-
-void Lcd_Clear(void);
-
-void Lcd_Set_Cursor(char a, char b);
-
-void Lcd_Init(void);
-
-void Lcd_Write_Char(char a);
-
-void Lcd_Write_String(char *a);
-
-void Lcd_Shift_Right(void);
-
-void Lcd_Shift_Left(void);
+//void Lcd_Port(char a);
+//
+//void Lcd_Cmd(char a);
+//
+//void Lcd_Clear(void);
+//
+//void Lcd_Set_Cursor(char a, char b);
+//
+//void Lcd_Init(void);
+//
+//void Lcd_Write_Char(char a);
+//
+//void Lcd_Write_String(char *a);
+//
+//void Lcd_Shift_Right(void);
+//
+//void Lcd_Shift_Left(void);
 
 ////COnversion ADC 
 //void convert(char *data,float a, int place);

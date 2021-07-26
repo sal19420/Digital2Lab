@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Librerias.h"
+#include "ADC.h"
 
 #define _XTAL_FREQ 8000000 
 #define _tmr0_value 217
@@ -76,18 +77,6 @@ void main(void) {
         }
   
 
-//    for(a=0;a<15;a++)
-//    {
-//        __delay_ms(300);
-//        Lcd_Shift_Left();
-//    }
-//
-//    for(a=0;a<15;a++)
-//    {
-//        __delay_ms(300);
-//        Lcd_Shift_Right();
-//    }
-
    
     Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(adc0);
@@ -99,9 +88,7 @@ void main(void) {
         Lcd_Set_Cursor(2, 11);
         Lcd_Write_String("V");
 
-//        Lcd_Set_Cursor(2, 15);
-//        Lcd_Write_String(string_uart);
-//        __delay_ms(20);
+
     
      conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
      conv1 = 0;//tanto para la LCD como por UART.

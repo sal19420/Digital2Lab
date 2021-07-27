@@ -46,19 +46,19 @@ char adc0[10];
 char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
-int bandera = 0;
  //**********Prototipos*********
  void config(void);
  
  //*****Interrupcio***
  
- void __interrupt() isr (void){
-     if (PIR1bits.RCIF){
-         valor_uart = RCREG;
-         bandera = 1;
- }
- }
+// void __interrupt() isr (void){
+//     if (PIR1bits.RCIF){
+//         valor_uart = RCREG;
+//         bandera = 1;
+// }
+// }
 
+ 
 void main(void) {
     config();
   Lcd_Init();
@@ -87,18 +87,19 @@ void main(void) {
             }
             PIR1bits.ADIF = 0;
         }
-        if (bandera == 1) { //se comprueba si el valor ingresado hace que el contador
-            valor_uart = 0;
+        if (UARTDataReady()) { //se comprueba si el valor ingresado hace que el contador
+            valor_uart = UARTReadChar();
             if (valor_uart == 'a') { //aumente si es el caracter "+"
-                cont_uart++; 
-               
-                valor_uart = 0;
+                cont_uart++;
+              
             } 
             else if (valor_uart == 'b') {//disminuya si es el caracter "-"
                 cont_uart--;
-                valor_uart = 0;
+               
+                
             }
-            bandera =0;
+            
+           
         }
 
         conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
@@ -129,7 +130,7 @@ void main(void) {
         //---------------------Sensor 3(contador)-------------------------------
         convert(string_uart, cont_uart, 1);
 //        sprintf(string_uart,"%3.0f",cont_uart);
-        printf(valor_uart);
+//        printf(valor_uart);
 //-----------------------Mostrar datos en la LCD--------------------------------
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(adc0);
@@ -154,13 +155,12 @@ void config(void) {
     ANSELH  = 0X00;             //PORTB, el PORTC y PORTD como salidas
     
                                  //Colocamos RA0 Y RA1 como entradas y el resto del
-    TRISC   = 0X00;             //PORTB, el PORTC y PORTD como salidas
+                //PORTB, el PORTC y PORTD como salidas
     TRISD   = 0X00;
     TRISA   = 0X03;
     TRISE   = 0X00;
     
     PORTA   = 0X00;
-    PORTC   = 0X00;
     PORTD   = 0X00;
     PORTE   = 0x00;
     

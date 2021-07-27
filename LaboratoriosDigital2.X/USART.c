@@ -58,15 +58,15 @@ void UARTSendString(const char* str, const uint8_t max_length) {
 }
 
 
-//uint8_t UARTDataReady() {
-//    return PIR1bits.RCIF;
-//}
+uint8_t UARTDataReady() {
+    return PIR1bits.RCIF;
+}
 
 
-//char UARTReadChar() {
-//    while (!UARTDataReady()); // Wait for data to be available
-//    return RCREG;
-//}
+char UARTReadChar() {
+    while (!UARTDataReady()); // Wait for data to be available
+    return RCREG;
+}
 
 
 uint8_t UARTReadString(char *buf, uint8_t max_length) {

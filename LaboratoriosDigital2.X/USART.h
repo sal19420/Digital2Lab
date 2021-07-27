@@ -22,7 +22,7 @@
 void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
 void UARTSendChar(const char c);     //mandamos el dato 
 void UARTSendString(const char* str, const uint8_t max_length);
-//uint8_t UARTDataReady();    
+uint8_t UARTDataReady();    
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 

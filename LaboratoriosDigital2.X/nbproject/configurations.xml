@@ -7,6 +7,7 @@
       <itemPath>Librerias.h</itemPath>
       <itemPath>ADC.h</itemPath>
       <itemPath>LCD.h</itemPath>
+      <itemPath>USART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>Lab_02_1.c</itemPath>
       <itemPath>ADC.c</itemPath>
       <itemPath>LCD.c</itemPath>
+      <itemPath>USART.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

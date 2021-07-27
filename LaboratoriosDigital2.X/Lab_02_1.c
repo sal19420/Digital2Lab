@@ -29,6 +29,7 @@
 #include "Librerias.h"
 #include "ADC.h"
 #include "LCD.h"
+#include "USART.h"
 
 #define _XTAL_FREQ 8000000 
 #define _tmr0_value 217
@@ -45,20 +46,30 @@ char adc0[10];
 char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
+int bandera = 0;
  //**********Prototipos*********
  void config(void);
+ 
+ //*****Interrupcio***
+ 
+ void __interrupt() isr (void){
+     if (PIR1bits.RCIF){
+         valor_uart = RCREG;
+         bandera = 1;
+ }
+ }
 
 void main(void) {
     config();
   Lcd_Init();
-   start_adc(2, 0, 0, 0); //Fosc/8, No ISR de ADC, Ref Vdd y Vcc, a la izquierda
-    start_ch(0); //Habilita el pin del Puerto RB0.
-    start_ch(1); //Habilita el pin del Puerto RB1.
+   start_adc(2, 1, 0, 0); //Fosc/8, No ISR de ADC, Ref Vdd y Vcc, a la izquierda
+    start_ch(0); //Habilita el pin del Puerto RA0.
+    start_ch(1); //Habilita el pin del Puerto RA1.
     Select_ch(0); //Selecciona el canal e inicia la conversion.
     Lcd_Clear();
-  while(1)
-  {
-      Lcd_Set_Cursor(1, 1);
+    UARTInit(9600, 1);
+  while (1) {
+        Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:");
         Lcd_Set_Cursor(1, 8);
         Lcd_Write_String("S2:");
@@ -76,10 +87,51 @@ void main(void) {
             }
             PIR1bits.ADIF = 0;
         }
-  
+        if (bandera == 1) { //se comprueba si el valor ingresado hace que el contador
+            valor_uart = 0;
+            if (valor_uart == 'a') { //aumente si es el caracter "+"
+                cont_uart++; 
+               
+                valor_uart = 0;
+            } 
+            else if (valor_uart == 'b') {//disminuya si es el caracter "-"
+                cont_uart--;
+                valor_uart = 0;
+            }
+            bandera =0;
+        }
 
-   
-    Lcd_Set_Cursor(2, 1);
+        conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
+        conv1 = 0;//tanto para la LCD como por UART.
+//------------------------Mostrar datos via UART--------------------------------
+        //-----------------------------Sensor 1---------------------------------
+        conv0 = (var_adc0 / (float) 255)*5; //Se consigue el porcentaje con respecto al valor 
+       //maximo que un puerto puede tener, despues se multiplica por 5 para conocer el voltaje actual del puerto                                          
+        convert(adc0, conv0, 2);//se convierte el valor actual a un valor ASCII.
+        UARTSendString("|", 3);
+        UARTSendString("S1", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc0, 6);
+        UARTSendString("V", 3);
+        UARTSendString(",", 3);
+        UARTSendString(" ", 3);
+        //-----------------------------Sensor 2---------------------------------
+        conv1 = (var_adc1 / (float) 255)*5; //misma logica que conv0
+        convert(adc1, conv1, 2);
+        UARTSendString("S2", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc1, 6);
+        UARTSendString("V", 3);
+        UARTSendString("|", 3);
+        UARTSendString(" ", 3);
+        //---------------------Sensor 3(contador)-------------------------------
+        convert(string_uart, cont_uart, 1);
+//        sprintf(string_uart,"%3.0f",cont_uart);
+        printf(valor_uart);
+//-----------------------Mostrar datos en la LCD--------------------------------
+        Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(adc0);
         Lcd_Set_Cursor(2, 5);
         Lcd_Write_String("V");
@@ -89,19 +141,12 @@ void main(void) {
         Lcd_Set_Cursor(2, 11);
         Lcd_Write_String("V");
 
+        Lcd_Set_Cursor(2, 15);
+        Lcd_Write_String(string_uart);
+        __delay_ms(20);
 
+    }
     
-     conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
-     conv1 = 0;//tanto para la LCD como por UART.
-        
-        conv0 = (var_adc0 / (float) 255)*5; //Se consigue el porcentaje con respecto al valor 
-       //maximo que un puerto puede tener, despues se multiplica por 5 para conocer el voltaje actual del puerto                                          
-        convert(adc0, conv0, 2);//se convierte el valor actual a un valor ASCII.
-        
-        conv1 = (var_adc1 / (float) 255)*5; //misma logica que conv0
-        convert(adc1, conv1, 2);
-  }
-    return;
 }
 void config(void) {
     //Configuracion de los puertos
@@ -135,17 +180,5 @@ void config(void) {
 //    INTCONbits.T0IF  = 0;
 //    INTCONbits.RBIF  = 0;
 //    PIR1bits.ADIF    = 0;
-//    
-//     //Configuracion ADC
-//    ADCON1bits.ADFM     = 0;    //Justificado a la izquierda
-//    ADCON1bits.VCFG0    = 0;    //Colocamos los voltajes de ref como VSS y VDD
-//    ADCON1bits.VCFG1    = 0;
-//    
-//    ADCON0bits.ADCS1    = 1;    //Reloj de conversion como FOSC/32
-//    ADCON0bits.CHS      = 0;    //Chanel 0
-//    __delay_ms(200);
-//    ADCON0bits.ADON     = 1;    //Encendemos el ADC
-//    __delay_ms(200);
-//   
 //    
 }

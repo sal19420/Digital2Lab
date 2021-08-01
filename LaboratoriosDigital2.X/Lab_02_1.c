@@ -36,7 +36,10 @@
 
 
 //**********Variables***********
-uint8_t canal_act = 0;
+uint8_t canal_act = 0;char adc0[10];
+char adc1[10];
+float conv0 = 0;
+float conv1 = 0;
 volatile uint8_t var_adc0 = 0;
 volatile uint8_t var_adc1 = 0;
 float cont_uart = 0;

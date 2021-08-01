@@ -24,9 +24,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46
 [; ;./LibreriasL3.h: 46: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
-"45
-[; ;./LibreriasL3.h: 45: unsigned spiDataReady();
-[v _spiDataReady `(ui ~T0 @X0 0 e? ]
 "22 ./USARTL3.h
 [; ;./USARTL3.h: 22: void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
 [v _UARTInit `(v ~T0 @X0 0 ef2`Cul`Cuc ]
@@ -391,9 +388,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "60
 [; ;Maestro.c: 60:        adc0 = spiRead();
 [e = _adc0 ( _spiRead ..  ]
-"62
-[; ;Maestro.c: 62:        spiDataReady();
-[e ( _spiDataReady ..  ]
 "63
 [; ;Maestro.c: 63:        _delay((unsigned long)((1)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]

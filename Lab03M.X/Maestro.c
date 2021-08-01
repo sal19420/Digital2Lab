@@ -59,7 +59,7 @@ void main(void) {
        spiWrite(conv0);
        adc0 = spiRead();
 //       spiReceiveWait();
-       spiDataReady();
+      // spiDataReady();
        __delay_ms(1);
        PORTCbits.RC2 = 1;
        

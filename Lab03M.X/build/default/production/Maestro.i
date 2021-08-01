@@ -2951,7 +2951,7 @@ void main(void) {
        spiWrite(conv0);
        adc0 = spiRead();
 
-       spiDataReady();
+
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
 

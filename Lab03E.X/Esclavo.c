@@ -50,13 +50,20 @@ float conv1 = 0;
  //**********Interrupcion********* 
  void __interrupt() isr(void){
    if(SSPIF == 1){
-        PORTC = spiRead();
-        spiWrite(conv0);
-        PORTD = spiRead();
-        spiWrite(conv1);
-        PORTD = spiRead();
-        spiWrite(PORTB);
-        SSPIF = 0;
+       uint8_t bandera;
+       bandera = spiRead();
+       
+       switch (bandera){
+           case 1: 
+               spiWrite(var_adc0);
+               break;
+           case 2: 
+               spiWrite(var_adc1);
+               break;
+       }
+        
+      
+        PIR1bits.SSPIF = 0;
     }
 }
 void main(void) {
@@ -66,7 +73,7 @@ void main(void) {
     start_ch(1); //Habilita el pin del Puerto RA1.
     Select_ch(0); //Selecciona el canal e inicia la conversion.
     
-    UARTInit(9600, 1);
+  
      while (1) {
          if (PIR1bits.ADIF == 1) {
             if (canal_act == 0) {
@@ -82,23 +89,23 @@ void main(void) {
             }
             PIR1bits.ADIF = 0;
         }
-         conv0 = 0;
-        //-----------------------------Sensor 1---------------------------------
-        conv0 = (var_adc0 / (float) 255)*5;
-        convert(adc0, conv0, 2);//se convierte el valor actual a un valor ASCIIv.
-//        PORTC = conv0;
-          //-----------------------------Sensor 2---------------------------------
-        conv1 = (var_adc1 / (float) 255)*5; //misma logica que conv0
-        convert(adc1, conv1, 2);
-//        PORTD = conv1;
+//         conv0 = 0;
+//        //-----------------------------Sensor 1---------------------------------
+//        conv0 = (var_adc0 / (float) 255)*5;
+////        convert(adc0, conv0, 2);//se convierte el valor actual a un valor ASCIIv.
+////        PORTC = conv0;
+//          //-----------------------------Sensor 2---------------------------------
+//        conv1 = (var_adc1 / (float) 255)*5; //misma logica que conv0
+////        convert(adc1, conv1, 2);
+////        PORTD = conv1;
+//        
         
-        PORTB++;
-        __delay_ms(200);
+        
      }
     return;
 }
 void configE(void){
-    ANSEL   = 0X00;             //Colocamos RA0 como entrada analogica
+    ANSEL   = 0X03;             //Colocamos RA0 como entrada analogica
     ANSELH  = 0X00;             //PORTB, el PORTC y PORTD como salidas
     
     TRISA0 = 1;
@@ -106,11 +113,9 @@ void configE(void){
                     
     TRISB = 0X00; //PORTB Como salidas
     
-    TRISC = 0X00;
     TRISD = 0X00;
    
     PORTB = 0X00;
-    PORTC = 0X00;
     PORTD = 0X00;
     
     //Configuracion del Oscilador

@@ -2922,24 +2922,7 @@ uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 # 33 "Maestro.c" 2
-
-
-
-
-
-
-
-
-uint8_t canal_act = 0;
-volatile uint8_t var_adc0 = 0;
-volatile uint8_t var_adc1 = 0;
-char adc0;
-char adc1;
-float conv0 = 0;
-float conv1 = 0;
-uint8_t contador;
-
-
+# 51 "Maestro.c"
  void config(void);
 
 void main(void) {
@@ -2948,8 +2931,8 @@ void main(void) {
     while(1){
         PORTCbits.RC2 = 0;
        _delay((unsigned long)((1)*(8000000/4000.0)));
-       spiWrite(conv0);
-       adc0 = spiRead();
+       spiWrite(1);
+       PORTD = spiRead();
 
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
@@ -2957,37 +2940,11 @@ void main(void) {
 
        PORTCbits.RC2 = 0;
        _delay((unsigned long)((1)*(8000000/4000.0)));
-       spiWrite(conv1);
-       adc1 = spiRead();
+       spiWrite(2);
+       PORTB = spiRead();
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
-
-       PORTCbits.RC2 = 0;
-       _delay((unsigned long)((1)*(8000000/4000.0)));
-       spiWrite(contador);
-       contador = spiRead();
-       _delay((unsigned long)((1)*(8000000/4000.0)));
-       PORTCbits.RC2 = 1;
-
-        UARTInit(9600, 1);
-        UARTSendString("|", 3);
-        UARTSendString("S1", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc0, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-
-        UARTSendString("|", 3);
-        UARTSendString("S2", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc1, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-
+# 94 "Maestro.c"
     }
     return;
 }
@@ -2999,13 +2956,16 @@ void config(void){
 
 
     TRISB = 0X00;
+    TRISD = 0x00;
     TRISC2 = 0;
 
     PORTB = 0X00;
+    PORTD = 0X00;
 
 
    config_osc(7);
 
-   PORTCbits.RC2 = 1;
-   spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+    PORTCbits.RC2 = 1;
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 }

@@ -38,14 +38,14 @@
 #define _tmr0_value 217
 
 //**********Variables***********
-uint8_t canal_act = 0;
-volatile uint8_t var_adc0 = 0;
-volatile uint8_t var_adc1 = 0;
-char adc0;
-char adc1;
-float conv0 = 0;
-float conv1 = 0;
-uint8_t contador;
+//uint8_t canal_act = 0;
+//volatile uint8_t var_adc0 = 0;
+//volatile uint8_t var_adc1 = 0;
+//char adc0;
+//char adc1;
+//float conv0 = 0;
+//float conv1 = 0;
+//uint8_t contador;
 
  //**********Prototipos*********
  void config(void);
@@ -56,8 +56,8 @@ void main(void) {
     while(1){
         PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
-       spiWrite(conv0);
-       adc0 = spiRead();
+       spiWrite(1);
+       PORTD = spiRead();
 //       spiReceiveWait();
       // spiDataReady();
        __delay_ms(1);
@@ -65,36 +65,31 @@ void main(void) {
        
        PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
-       spiWrite(conv1);
-       adc1 = spiRead();
-       __delay_ms(1);
+       spiWrite(2);
+       PORTB = spiRead();
+       __delay_ms(1);   
        PORTCbits.RC2 = 1;
        
-       PORTCbits.RC2 = 0;       //Slave Select
-       __delay_ms(1);
-       spiWrite(contador);
-       contador = spiRead();
-       __delay_ms(1);
-       PORTCbits.RC2 = 1;
-       
-        UARTInit(9600, 1);
-        UARTSendString("|", 3);
-        UARTSendString("S1", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc0, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-        
-        UARTSendString("|", 3);
-        UARTSendString("S2", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc1, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
+//       convert(adc0, conv0, 2);
+//       convert(adc1, conv1, 2);
+//        UARTInit(9600, 1);
+//        UARTSendString("|", 3);
+//        UARTSendString("S1", 6);
+//        UARTSendString(":", 3);
+//        UARTSendString(" ", 3);
+//        UARTSendString(adc0, 6);
+//        UARTSendString("V", 3);
+//        UARTSendString(",", 3);
+//        UARTSendString(" ", 3);
+//        
+//        UARTSendString("|", 3);
+//        UARTSendString("S2", 6);
+//        UARTSendString(":", 3);
+//        UARTSendString(" ", 3);
+//        UARTSendString(adc1, 6);
+//        UARTSendString("V", 3);
+//        UARTSendString(",", 3);
+//        UARTSendString(" ", 3);
        
     }
     return;
@@ -107,13 +102,16 @@ void config(void){
                                  //Colocamos RA0 Y RA1 como entradas y el resto del
                 //PORTB Como salidas
     TRISB = 0X00;
+    TRISD = 0x00;
     TRISC2 = 0;
     
     PORTB = 0X00;
+    PORTD = 0X00;
     
     //Configuracion del Oscilador
    config_osc(7);
    
-   PORTCbits.RC2 = 1;
-   spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+   
+    PORTCbits.RC2 = 1;
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 }

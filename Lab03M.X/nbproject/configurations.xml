@@ -69,6 +69,10 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="ADCL3.c" ex="true" overriding="false">
+      </item>
+      <item path="ADCL3.h" ex="true" overriding="false">
+      </item>
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
         <property key="asmlist" value="true"/>
@@ -149,6 +153,12 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <item path="LibreriasL3.c" ex="true" overriding="false">
+      </item>
+      <item path="LibreriasL3.h" ex="true" overriding="false">
+      </item>
+      <item path="Maestro.c" ex="true" overriding="false">
+      </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
         <property key="codecoverage.enableoutputtofile" value="false"/>
@@ -1083,6 +1093,10 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
+      <item path="USARTL3.c" ex="true" overriding="false">
+      </item>
+      <item path="USARTL3.h" ex="true" overriding="false">
+      </item>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
         <property key="stack-guidance" value="false"/>

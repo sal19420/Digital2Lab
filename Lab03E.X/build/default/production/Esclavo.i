@@ -2943,13 +2943,20 @@ float conv1 = 0;
 
  void __attribute__((picinterrupt(("")))) isr(void){
    if(SSPIF == 1){
-        PORTC = spiRead();
-        spiWrite(conv0);
-        PORTD = spiRead();
-        spiWrite(conv1);
-        PORTD = spiRead();
-        spiWrite(PORTB);
-        SSPIF = 0;
+       uint8_t bandera;
+       bandera = spiRead();
+
+       switch (bandera){
+           case 1:
+               spiWrite(var_adc0);
+               break;
+           case 2:
+               spiWrite(var_adc1);
+               break;
+       }
+
+
+        PIR1bits.SSPIF = 0;
     }
 }
 void main(void) {
@@ -2959,7 +2966,7 @@ void main(void) {
     start_ch(1);
     Select_ch(0);
 
-    UARTInit(9600, 1);
+
      while (1) {
          if (PIR1bits.ADIF == 1) {
             if (canal_act == 0) {
@@ -2975,23 +2982,12 @@ void main(void) {
             }
             PIR1bits.ADIF = 0;
         }
-         conv0 = 0;
-
-        conv0 = (var_adc0 / (float) 255)*5;
-        convert(adc0, conv0, 2);
-
-
-        conv1 = (var_adc1 / (float) 255)*5;
-        convert(adc1, conv1, 2);
-
-
-        PORTB++;
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+# 104 "Esclavo.c"
      }
     return;
 }
 void configE(void){
-    ANSEL = 0X00;
+    ANSEL = 0X03;
     ANSELH = 0X00;
 
     TRISA0 = 1;
@@ -2999,11 +2995,9 @@ void configE(void){
 
     TRISB = 0X00;
 
-    TRISC = 0X00;
     TRISD = 0X00;
 
     PORTB = 0X00;
-    PORTC = 0X00;
     PORTD = 0X00;
 
 

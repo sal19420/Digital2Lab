@@ -6,7 +6,7 @@
 #pragma config FOSC = INTRC_NOCLKOUT
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
-#include <pic16f887.h>
+//#include <pic16f887.h>
 
 
 void config_osc(uint8_t frec);

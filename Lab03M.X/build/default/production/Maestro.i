@@ -2922,30 +2922,23 @@ uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 # 33 "Maestro.c" 2
-# 122 "Maestro.c"
+# 49 "Maestro.c"
 uint8_t sensor1;
 uint8_t sensor2;
-# 132 "Maestro.c"
-void setup(void);
-void Eusart(void);
-void putch(char data);
 
 
-
+ void config(void);
 
 void main(void) {
-    setup();
 
-
-
+    config();
     while(1){
-
-
-       PORTCbits.RC2 = 0;
+        PORTCbits.RC2 = 0;
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
        spiWrite(1);
-       sensor1 = spiRead();
+       PORTB = spiRead();
+
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
@@ -2954,38 +2947,34 @@ void main(void) {
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
        spiWrite(2);
-       sensor2 = spiRead();
+       PORTD = spiRead();
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
-
-
+# 99 "Maestro.c"
     }
     return;
 }
 
-
-
-void setup(void){
-    ANSEL = 0x00;
-    ANSELH = 0x00;
-
+void config(void){
+    ANSEL = 0X00;
+    ANSELH = 0X00;
 
 
 
-
-    TRISB = 0x00;
+    TRISB = 0X00;
     TRISD = 0x00;
 
-    PORTB = 0x00;
-    PORTD = 0x00;
+
+    PORTB = 0X00;
+    PORTD = 0X00;
+
     PORTCbits.RC2 = 1;
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
-    OSCCONbits.IRCF2 = 1;
-    OSCCONbits.IRCF1 = 1;
-    OSCCONbits.IRCF0 = 1;
-    OSCCONbits.SCS = 1;
+   config_osc(7);
+
+
    return;
 }

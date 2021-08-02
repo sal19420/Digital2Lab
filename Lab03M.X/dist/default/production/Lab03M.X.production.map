@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Lab03M.X.production.sym \
   --cmf=dist/default/production\Lab03M.X.production.cmf -z -Q16F887 \
-  -oC:\Users\Admin\AppData\Local\Temp\xcAs8jo.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\Admin\AppData\Local\Temp\xcAsaug.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Lab03M.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\Admin\AppData\Local\Temp\xcAs8jo.o \
+  -pfunctab=ENTRY -k C:\Users\Admin\AppData\Local\Temp\xcAsaug.o \
   dist/default/production\Lab03M.X.production.o 
 
 Object code version is 3.11
@@ -28,34 +28,33 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Admin\AppData\Local\Temp\xcAs8jo.o
+C:\Users\Admin\AppData\Local\Temp\xcAsaug.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\Lab03M.X.production.o
-                cinit                               7FC      7FC        4      FF8       0
+                cinit                               7FA      7FA        6      FF4       0
                 config                             2007     2007        2        0       4
-                text6                               7A7      7A7       55      F4E       0
-                text5                               71E      71E       16      E3C       0
-                text4                               734      734       20      E68       0
-                text3                               70E      70E        7      E1C       0
-                text2                               715      715        9      E2A       0
-                text1                               708      708        6      E10       0
-                maintext                            754      754       53      EA8       0
+                text5                               774      774       16      EE8       0
+                text4                               78A      78A       1D      F14       0
+                text3                               764      764        7      EC8       0
+                text2                               76B      76B        9      ED6       0
+                text1                               75E      75E        6      EBC       0
+                maintext                            7A7      7A7       53      F4E       0
                 cstackCOMMON                         70       70        6       70       1
+                bssCOMMON                            76       76        2       70       1
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 end_init                              0        0        3         0
-                cinit                               7FC      7FC        4         0
-                text6                               7A7      7A7       55         0
-                text5                               71E      71E       16         0
-                text4                               734      734       20         0
-                text3                               70E      70E        7         0
-                text2                               715      715        9         0
-                text1                               708      708        6         0
-                maintext                            754      754       53         0
+                cinit                               7FA      7FA        6         0
+                text5                               774      774       16         0
+                text4                               78A      78A       1D         0
+                text3                               764      764        7         0
+                text2                               76B      76B        9         0
+                text1                               75E      75E        6         0
+                maintext                            7A7      7A7       53         0
 
         CLASS   STRCODE        
 
@@ -67,6 +66,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
         CLASS   COMMON         
                 cstackCOMMON                         70       70        6         1
+                bssCOMMON                            76       76        2         1
 
         CLASS   BANK0          
 
@@ -101,15 +101,14 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                cstackCOMMON                   000070  000006  000076        70       1  COMMON      1
-                text1                          000708  000006  00070E       E10       0  CODE        2
-                text3                          00070E  000007  000715       E1C       0  CODE        2
-                text2                          000715  000009  00071E       E2A       0  CODE        2
-                text5                          00071E  000016  000734       E3C       0  CODE        2
-                text4                          000734  000020  000754       E68       0  CODE        2
-                maintext                       000754  000053  0007A7       EA8       0  CODE        2
-                text6                          0007A7  000055  0007FC       F4E       0  CODE        2
-                cinit                          0007FC  000004  000800       FF8       0  CODE        2
+                cstackCOMMON                   000070  000008  000078        70       1  COMMON      1
+                text1                          00075E  000006  000764       EBC       0  CODE        2
+                text3                          000764  000007  00076B       EC8       0  CODE        2
+                text2                          00076B  000009  000774       ED6       0  CODE        2
+                text5                          000774  000016  00078A       EE8       0  CODE        2
+                text4                          00078A  00001D  0007A7       F14       0  CODE        2
+                maintext                       0007A7  000053  0007FA       F4E       0  CODE        2
+                cinit                          0007FA  000006  000800       FF4       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -119,13 +118,13 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-0707            705           2
+        CODE             0003-075D            75B           2
                          0800-1FFF            800
-        COMMON           0076-007D              8           1
-        CONST            0003-0707            100           2
+        COMMON           0078-007D              6           1
+        CONST            0003-075D            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-0707            100           2
+        ENTRY            0003-075D            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0020-006F             50           1
@@ -137,9 +136,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
-        STRCODE          0003-0707            705           2
+        STRCODE          0003-075D            75B           2
                          0800-1FFF           1800
-        STRING           0003-0707            100           2
+        STRING           0003-075D            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -164,7 +163,6 @@ _SSPCON                  (abs)        0014
 _SSPSTAT                 (abs)        0094
 _SSPSTATbits             (abs)        0094
 _TRISB                   (abs)        0086
-_TRISC2                  (abs)        043A
 _TRISC3                  (abs)        043B
 _TRISC5                  (abs)        043D
 _TRISCbits               (abs)        0087
@@ -177,6 +175,7 @@ __Hbank0                 bank0        0000
 __Hbank1                 bank1        0000
 __Hbank2                 bank2        0000
 __Hbank3                 bank3        0000
+__HbssCOMMON             bssCOMMON    0000
 __Hcinit                 cinit        0800
 __Hclrtext               clrtext      0000
 __Hcode                  code         0000
@@ -197,7 +196,7 @@ __Hsfr1                  sfr1         0000
 __Hsfr2                  sfr2         0000
 __Hsfr3                  sfr3         0000
 __Hspace_0               (abs)        0800
-__Hspace_1               (abs)        0076
+__Hspace_1               (abs)        0078
 __Hspace_2               (abs)        0000
 __Hspace_3               (abs)        0000
 __Hspace_4               (abs)        4010
@@ -209,7 +208,8 @@ __Lbank0                 bank0        0000
 __Lbank1                 bank1        0000
 __Lbank2                 bank2        0000
 __Lbank3                 bank3        0000
-__Lcinit                 cinit        07FC
+__LbssCOMMON             bssCOMMON    0000
+__Lcinit                 cinit        07FA
 __Lclrtext               clrtext      0000
 __Lcode                  code         0000
 __Lcommon                common       0000
@@ -237,7 +237,7 @@ __Lstack                 stack        0000
 __Lstrings               strings      0000
 __Ltext                  text         0000
 __S0                     (abs)        0800
-__S1                     (abs)        0076
+__S1                     (abs)        0078
 __S2                     (abs)        0000
 __S3                     (abs)        0000
 ___int_sp                stack        0000
@@ -246,38 +246,36 @@ ___sp                    stack        0000
 ___stackhi               (abs)        0000
 ___stacklo               (abs)        0000
 __end_of__initialization cinit        07FC
-__end_of_config          text4        0754
-__end_of_config_osc      text6        07FC
-__end_of_main            maintext     07A7
-__end_of_spiInit         text5        0734
-__end_of_spiRead         text2        071E
-__end_of_spiReceiveWait  text3        0715
-__end_of_spiWrite        text1        070E
-__initialization         cinit        07FC
+__end_of_main            maintext     07FA
+__end_of_setup           text4        07A7
+__end_of_spiInit         text5        078A
+__end_of_spiRead         text2        0774
+__end_of_spiReceiveWait  text3        076B
+__end_of_spiWrite        text1        0764
+__initialization         cinit        07FA
+__pbssCOMMON             bssCOMMON    0076
 __pcstackCOMMON          cstackCOMMON 0070
-__pmaintext              maintext     0754
-__ptext1                 text1        0708
-__ptext2                 text2        0715
-__ptext3                 text3        070E
-__ptext4                 text4        0734
-__ptext5                 text5        071E
-__ptext6                 text6        07A7
-__size_of_config         (abs)        0000
-__size_of_config_osc     (abs)        0000
+__pmaintext              maintext     07A7
+__ptext1                 text1        075E
+__ptext2                 text2        076B
+__ptext3                 text3        0764
+__ptext4                 text4        078A
+__ptext5                 text5        0774
 __size_of_main           (abs)        0000
+__size_of_setup          (abs)        0000
 __size_of_spiInit        (abs)        0000
 __size_of_spiRead        (abs)        0000
 __size_of_spiReceiveWait (abs)        0000
 __size_of_spiWrite       (abs)        0000
-_config                  text4        0734
-_config_osc              text6        07A7
-_main                    maintext     0754
-_spiInit                 text5        071E
-_spiRead                 text2        0715
-_spiReceiveWait          text3        070E
-_spiWrite                text1        0708
+_main                    maintext     07A7
+_sensor1                 bssCOMMON    0077
+_sensor2                 bssCOMMON    0076
+_setup                   text4        078A
+_spiInit                 text5        0774
+_spiRead                 text2        076B
+_spiReceiveWait          text3        0764
+_spiWrite                text1        075E
 btemp                    (abs)        007E
-config_osc@frec          cstackCOMMON 0072
 end_of_initialization    cinit        07FC
 intlevel0                functab      0000
 intlevel1                functab      0000
@@ -292,7 +290,7 @@ spiInit@sTransmitEdge    cstackCOMMON 0072
 spiInit@sType            cstackCOMMON 0073
 spiWrite@dat             cstackCOMMON 0070
 start                    init         0000
-start_initialization     cinit        07FC
+start_initialization     cinit        07FA
 wtemp0                   (abs)        007E
 
 
@@ -300,22 +298,21 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 Maestro.c
-		_main          		CODE           	0754	0000	83
-		_config        		CODE           	0734	0000	32
+		_main          		CODE           	07A7	0000	83
+		_setup         		CODE           	078A	0000	29
 
-Maestro.c estimated size: 115
+Maestro.c estimated size: 112
 
 shared
-		__initialization		CODE           	07FC	0000	1
+		__initialization		CODE           	07FA	0000	2
 
-shared estimated size: 1
+shared estimated size: 2
 
 LibreriasL3.c
-		_spiWrite      		CODE           	0708	0000	6
-		_spiInit       		CODE           	071E	0000	22
-		_spiReceiveWait		CODE           	070E	0000	7
-		_spiRead       		CODE           	0715	0000	9
-		_config_osc    		CODE           	07A7	0000	85
+		_spiWrite      		CODE           	075E	0000	6
+		_spiInit       		CODE           	0774	0000	22
+		_spiReceiveWait		CODE           	0764	0000	7
+		_spiRead       		CODE           	076B	0000	9
 
-LibreriasL3.c estimated size: 129
+LibreriasL3.c estimated size: 44
 

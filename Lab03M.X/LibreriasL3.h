@@ -31,7 +31,7 @@ typedef enum
 {
     SPI_CLOCK_IDLE_HIGH  = 0b00010000,
     SPI_CLOCK_IDLE_LOW   = 0b00000000        
-}Spi_Clock_Idle;
+}Spi_Clock_Idle;    
 
 typedef enum
 {

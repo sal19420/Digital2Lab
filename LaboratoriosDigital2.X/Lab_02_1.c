@@ -36,7 +36,8 @@
 
 
 //**********Variables***********
-uint8_t canal_act = 0;char adc0[10];
+uint8_t canal_act = 0;
+char adc0[10];
 char adc1[10];
 float conv0 = 0;
 float conv1 = 0;

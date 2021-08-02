@@ -46,6 +46,8 @@
 //float conv0 = 0;
 //float conv1 = 0;
 //uint8_t contador;
+uint8_t sensor1;
+uint8_t sensor2;
 
  //**********Prototipos*********
  void config(void);
@@ -56,19 +58,22 @@ void main(void) {
     while(1){
         PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
+       
        spiWrite(1);
-       PORTD = spiRead();
-//       spiReceiveWait();
-      // spiDataReady();
+       PORTB = spiRead();
+//       PORTB = sensor1;
+       
        __delay_ms(1);
-       PORTCbits.RC2 = 1;
+       PORTCbits.RC2 = 1;       //Slave Deselect 
        
        PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
+       
        spiWrite(2);
-       PORTB = spiRead();
-       __delay_ms(1);   
-       PORTCbits.RC2 = 1;
+       PORTD = spiRead();
+//       PORTD = sensor2;
+       __delay_ms(1);
+       PORTCbits.RC2 = 1;       //Slave Deselect
        
 //       convert(adc0, conv0, 2);
 //       convert(adc1, conv1, 2);
@@ -103,15 +108,17 @@ void config(void){
                 //PORTB Como salidas
     TRISB = 0X00;
     TRISD = 0x00;
-    TRISC2 = 0;
-    
+//    TRISC2 = 0;
+        
     PORTB = 0X00;
     PORTD = 0X00;
+    
+    PORTCbits.RC2 = 1;
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
     //Configuracion del Oscilador
    config_osc(7);
    
    
-    PORTCbits.RC2 = 1;
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+   return;
 }

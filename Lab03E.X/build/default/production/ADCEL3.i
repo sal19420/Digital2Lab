@@ -2894,6 +2894,7 @@ void convert(char *data,float a, int place)
 
 void start_adc(uint8_t frec, uint8_t isr, uint8_t Vref, uint8_t justRL) {
     ADCON0bits.ADON = 1;
+    _delay((unsigned long)((200)*(8000000/4000000.0)));
     switch (frec) {
         case 1:
             ADCON0bits.ADCS0 = 0;

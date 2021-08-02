@@ -22,7 +22,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1276
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1276: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0x01F)));
 [v _ADCON0bits `VS44 ~T0 @X0 0 e@31 ]
-"1708
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
+"1708 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1708:     struct {
 [s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S63 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE ]
@@ -77,10 +81,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3464
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3464: extern volatile ANSELHbits_t ANSELHbits __attribute__((address(0x189)));
 [v _ANSELHbits `VS134 ~T0 @X0 0 e@393 ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -558,59 +558,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ADCEL3.c: 75:     ADCON0bits.ADON = 1;
 [e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
 "76
-[; ;ADCEL3.c: 76:     switch (frec) {
+[; ;ADCEL3.c: 76:     _delay((unsigned long)((200)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"77
+[; ;ADCEL3.c: 77:     switch (frec) {
 [e $U 172  ]
 {
-"77
-[; ;ADCEL3.c: 77:         case 1:
-[e :U 173 ]
 "78
-[; ;ADCEL3.c: 78:             ADCON0bits.ADCS0 = 0;
-[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 78:         case 1:
+[e :U 173 ]
 "79
-[; ;ADCEL3.c: 79:             ADCON0bits.ADCS1 = 0;
-[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
-"80
-[; ;ADCEL3.c: 80:             break;
-[e $U 171  ]
-"81
-[; ;ADCEL3.c: 81:         case 2:
-[e :U 174 ]
-"82
-[; ;ADCEL3.c: 82:             ADCON0bits.ADCS0 = 1;
-[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
-"83
-[; ;ADCEL3.c: 83:             ADCON0bits.ADCS1 = 0;
-[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
-"84
-[; ;ADCEL3.c: 84:             break;
-[e $U 171  ]
-"85
-[; ;ADCEL3.c: 85:         case 3:
-[e :U 175 ]
-"86
-[; ;ADCEL3.c: 86:             ADCON0bits.ADCS0 = 0;
+[; ;ADCEL3.c: 79:             ADCON0bits.ADCS0 = 0;
 [e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
-"87
-[; ;ADCEL3.c: 87:             ADCON0bits.ADCS1 = 1;
-[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
-"88
-[; ;ADCEL3.c: 88:             break;
+"80
+[; ;ADCEL3.c: 80:             ADCON0bits.ADCS1 = 0;
+[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
+"81
+[; ;ADCEL3.c: 81:             break;
 [e $U 171  ]
-"89
-[; ;ADCEL3.c: 89:         case 4:
-[e :U 176 ]
-"90
-[; ;ADCEL3.c: 90:             ADCON0bits.ADCS0 = 1;
+"82
+[; ;ADCEL3.c: 82:         case 2:
+[e :U 174 ]
+"83
+[; ;ADCEL3.c: 83:             ADCON0bits.ADCS0 = 1;
 [e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
-"91
-[; ;ADCEL3.c: 91:             ADCON0bits.ADCS1 = 1;
-[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
-"92
-[; ;ADCEL3.c: 92:             break;
+"84
+[; ;ADCEL3.c: 84:             ADCON0bits.ADCS1 = 0;
+[e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
+"85
+[; ;ADCEL3.c: 85:             break;
 [e $U 171  ]
+"86
+[; ;ADCEL3.c: 86:         case 3:
+[e :U 175 ]
+"87
+[; ;ADCEL3.c: 87:             ADCON0bits.ADCS0 = 0;
+[e = . . _ADCON0bits 1 6 -> -> 0 `i `uc ]
+"88
+[; ;ADCEL3.c: 88:             ADCON0bits.ADCS1 = 1;
+[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
+"89
+[; ;ADCEL3.c: 89:             break;
+[e $U 171  ]
+"90
+[; ;ADCEL3.c: 90:         case 4:
+[e :U 176 ]
+"91
+[; ;ADCEL3.c: 91:             ADCON0bits.ADCS0 = 1;
+[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
+"92
+[; ;ADCEL3.c: 92:             ADCON0bits.ADCS1 = 1;
+[e = . . _ADCON0bits 1 7 -> -> 1 `i `uc ]
 "93
-[; ;ADCEL3.c: 93:     }
+[; ;ADCEL3.c: 93:             break;
+[e $U 171  ]
+"94
+[; ;ADCEL3.c: 94:     }
 }
 [e $U 171  ]
 [e :U 172 ]
@@ -620,94 +623,94 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 4 `i 176
  171 ]
 [e :U 171 ]
-"94
-[; ;ADCEL3.c: 94:     if (isr == 1) {
+"95
+[; ;ADCEL3.c: 95:     if (isr == 1) {
 [e $ ! == -> _isr `i -> 1 `i 177  ]
 {
-"95
-[; ;ADCEL3.c: 95:         PIE1bits.ADIE = 1;
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "96
-[; ;ADCEL3.c: 96:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 96:         PIE1bits.ADIE = 1;
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
 "97
-[; ;ADCEL3.c: 97:     }
+[; ;ADCEL3.c: 97:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"98
+[; ;ADCEL3.c: 98:     }
 }
 [e :U 177 ]
-"98
-[; ;ADCEL3.c: 98:     if (justRL == 0) {
+"99
+[; ;ADCEL3.c: 99:     if (justRL == 0) {
 [e $ ! == -> _justRL `i -> 0 `i 178  ]
 {
-"99
-[; ;ADCEL3.c: 99:         ADCON1bits.ADFM = 0;
-[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
 "100
-[; ;ADCEL3.c: 100:     } else {
+[; ;ADCEL3.c: 100:         ADCON1bits.ADFM = 0;
+[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
+"101
+[; ;ADCEL3.c: 101:     } else {
 }
 [e $U 179  ]
 [e :U 178 ]
 {
-"101
-[; ;ADCEL3.c: 101:         ADCON1bits.ADFM = 1;
-[e = . . _ADCON1bits 0 4 -> -> 1 `i `uc ]
 "102
-[; ;ADCEL3.c: 102:     }
+[; ;ADCEL3.c: 102:         ADCON1bits.ADFM = 1;
+[e = . . _ADCON1bits 0 4 -> -> 1 `i `uc ]
+"103
+[; ;ADCEL3.c: 103:     }
 }
 [e :U 179 ]
-"103
-[; ;ADCEL3.c: 103:     switch (Vref) {
+"104
+[; ;ADCEL3.c: 104:     switch (Vref) {
 [e $U 181  ]
 {
-"104
-[; ;ADCEL3.c: 104:         case 0:
-[e :U 182 ]
 "105
-[; ;ADCEL3.c: 105:             ADCON1bits.VCFG0 = 0;
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 105:         case 0:
+[e :U 182 ]
 "106
-[; ;ADCEL3.c: 106:             ADCON1bits.VCFG1 = 0;
-[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
-"107
-[; ;ADCEL3.c: 107:             break;
-[e $U 180  ]
-"108
-[; ;ADCEL3.c: 108:         case 1:
-[e :U 183 ]
-"109
-[; ;ADCEL3.c: 109:             ADCON1bits.VCFG0 = 1;
-[e = . . _ADCON1bits 0 1 -> -> 1 `i `uc ]
-"110
-[; ;ADCEL3.c: 110:             ADCON1bits.VCFG1 = 0;
-[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
-"111
-[; ;ADCEL3.c: 111:             break;
-[e $U 180  ]
-"112
-[; ;ADCEL3.c: 112:         case 2:
-[e :U 184 ]
-"113
-[; ;ADCEL3.c: 113:             ADCON1bits.VCFG0 = 0;
+[; ;ADCEL3.c: 106:             ADCON1bits.VCFG0 = 0;
 [e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
-"114
-[; ;ADCEL3.c: 114:             ADCON1bits.VCFG1 = 1;
-[e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
-"115
-[; ;ADCEL3.c: 115:             break;
+"107
+[; ;ADCEL3.c: 107:             ADCON1bits.VCFG1 = 0;
+[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
+"108
+[; ;ADCEL3.c: 108:             break;
 [e $U 180  ]
-"116
-[; ;ADCEL3.c: 116:         case 3:
-[e :U 185 ]
-"117
-[; ;ADCEL3.c: 117:             ADCON1bits.VCFG0 = 1;
+"109
+[; ;ADCEL3.c: 109:         case 1:
+[e :U 183 ]
+"110
+[; ;ADCEL3.c: 110:             ADCON1bits.VCFG0 = 1;
 [e = . . _ADCON1bits 0 1 -> -> 1 `i `uc ]
-"118
-[; ;ADCEL3.c: 118:             ADCON1bits.VCFG1 = 1;
-[e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
-"119
-[; ;ADCEL3.c: 119:             break;
+"111
+[; ;ADCEL3.c: 111:             ADCON1bits.VCFG1 = 0;
+[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
+"112
+[; ;ADCEL3.c: 112:             break;
 [e $U 180  ]
+"113
+[; ;ADCEL3.c: 113:         case 2:
+[e :U 184 ]
+"114
+[; ;ADCEL3.c: 114:             ADCON1bits.VCFG0 = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+"115
+[; ;ADCEL3.c: 115:             ADCON1bits.VCFG1 = 1;
+[e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
+"116
+[; ;ADCEL3.c: 116:             break;
+[e $U 180  ]
+"117
+[; ;ADCEL3.c: 117:         case 3:
+[e :U 185 ]
+"118
+[; ;ADCEL3.c: 118:             ADCON1bits.VCFG0 = 1;
+[e = . . _ADCON1bits 0 1 -> -> 1 `i `uc ]
+"119
+[; ;ADCEL3.c: 119:             ADCON1bits.VCFG1 = 1;
+[e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
 "120
-[; ;ADCEL3.c: 120:     }
+[; ;ADCEL3.c: 120:             break;
+[e $U 180  ]
+"121
+[; ;ADCEL3.c: 121:     }
 }
 [e $U 180  ]
 [e :U 181 ]
@@ -717,149 +720,149 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 185
  180 ]
 [e :U 180 ]
-"121
-[; ;ADCEL3.c: 121: }
+"122
+[; ;ADCEL3.c: 122: }
 [e :UE 170 ]
 }
-"124
-[; ;ADCEL3.c: 124: void start_ch(uint8_t channel) {
+"125
+[; ;ADCEL3.c: 125: void start_ch(uint8_t channel) {
 [v _start_ch `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _start_ch ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
-"125
-[; ;ADCEL3.c: 125:     switch (channel) {
+"126
+[; ;ADCEL3.c: 126:     switch (channel) {
 [e $U 188  ]
 {
-"126
-[; ;ADCEL3.c: 126:         case 0:
-[e :U 189 ]
 "127
-[; ;ADCEL3.c: 127:             ANSELbits.ANS0 = 1;
-[e = . . _ANSELbits 0 0 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 127:         case 0:
+[e :U 189 ]
 "128
-[; ;ADCEL3.c: 128:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 128:             ANSELbits.ANS0 = 1;
+[e = . . _ANSELbits 0 0 -> -> 1 `i `uc ]
 "129
-[; ;ADCEL3.c: 129:         case 1:
-[e :U 190 ]
+[; ;ADCEL3.c: 129:             break;
+[e $U 187  ]
 "130
-[; ;ADCEL3.c: 130:             ANSELbits.ANS1 = 1;
-[e = . . _ANSELbits 0 1 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 130:         case 1:
+[e :U 190 ]
 "131
-[; ;ADCEL3.c: 131:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 131:             ANSELbits.ANS1 = 1;
+[e = . . _ANSELbits 0 1 -> -> 1 `i `uc ]
 "132
-[; ;ADCEL3.c: 132:         case 2:
-[e :U 191 ]
+[; ;ADCEL3.c: 132:             break;
+[e $U 187  ]
 "133
-[; ;ADCEL3.c: 133:             ANSELbits.ANS2 = 1;
-[e = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 133:         case 2:
+[e :U 191 ]
 "134
-[; ;ADCEL3.c: 134:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 134:             ANSELbits.ANS2 = 1;
+[e = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
 "135
-[; ;ADCEL3.c: 135:         case 3:
-[e :U 192 ]
+[; ;ADCEL3.c: 135:             break;
+[e $U 187  ]
 "136
-[; ;ADCEL3.c: 136:             ANSELbits.ANS3 = 1;
-[e = . . _ANSELbits 0 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 136:         case 3:
+[e :U 192 ]
 "137
-[; ;ADCEL3.c: 137:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 137:             ANSELbits.ANS3 = 1;
+[e = . . _ANSELbits 0 3 -> -> 1 `i `uc ]
 "138
-[; ;ADCEL3.c: 138:         case 4:
-[e :U 193 ]
+[; ;ADCEL3.c: 138:             break;
+[e $U 187  ]
 "139
-[; ;ADCEL3.c: 139:             ANSELbits.ANS4 = 1;
-[e = . . _ANSELbits 0 4 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 139:         case 4:
+[e :U 193 ]
 "140
-[; ;ADCEL3.c: 140:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 140:             ANSELbits.ANS4 = 1;
+[e = . . _ANSELbits 0 4 -> -> 1 `i `uc ]
 "141
-[; ;ADCEL3.c: 141:         case 5:
-[e :U 194 ]
+[; ;ADCEL3.c: 141:             break;
+[e $U 187  ]
 "142
-[; ;ADCEL3.c: 142:             ANSELbits.ANS5 = 1;
-[e = . . _ANSELbits 0 5 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 142:         case 5:
+[e :U 194 ]
 "143
-[; ;ADCEL3.c: 143:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 143:             ANSELbits.ANS5 = 1;
+[e = . . _ANSELbits 0 5 -> -> 1 `i `uc ]
 "144
-[; ;ADCEL3.c: 144:         case 6:
-[e :U 195 ]
+[; ;ADCEL3.c: 144:             break;
+[e $U 187  ]
 "145
-[; ;ADCEL3.c: 145:             ANSELbits.ANS6 = 1;
-[e = . . _ANSELbits 0 6 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 145:         case 6:
+[e :U 195 ]
 "146
-[; ;ADCEL3.c: 146:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 146:             ANSELbits.ANS6 = 1;
+[e = . . _ANSELbits 0 6 -> -> 1 `i `uc ]
 "147
-[; ;ADCEL3.c: 147:         case 7:
-[e :U 196 ]
+[; ;ADCEL3.c: 147:             break;
+[e $U 187  ]
 "148
-[; ;ADCEL3.c: 148:             ANSELbits.ANS7 = 1;
-[e = . . _ANSELbits 0 7 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 148:         case 7:
+[e :U 196 ]
 "149
-[; ;ADCEL3.c: 149:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 149:             ANSELbits.ANS7 = 1;
+[e = . . _ANSELbits 0 7 -> -> 1 `i `uc ]
 "150
-[; ;ADCEL3.c: 150:         case 8:
-[e :U 197 ]
+[; ;ADCEL3.c: 150:             break;
+[e $U 187  ]
 "151
-[; ;ADCEL3.c: 151:             ANSELHbits.ANS8 = 1;
-[e = . . _ANSELHbits 0 0 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 151:         case 8:
+[e :U 197 ]
 "152
-[; ;ADCEL3.c: 152:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 152:             ANSELHbits.ANS8 = 1;
+[e = . . _ANSELHbits 0 0 -> -> 1 `i `uc ]
 "153
-[; ;ADCEL3.c: 153:         case 9:
-[e :U 198 ]
+[; ;ADCEL3.c: 153:             break;
+[e $U 187  ]
 "154
-[; ;ADCEL3.c: 154:             ANSELHbits.ANS9 = 1;
-[e = . . _ANSELHbits 0 1 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 154:         case 9:
+[e :U 198 ]
 "155
-[; ;ADCEL3.c: 155:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 155:             ANSELHbits.ANS9 = 1;
+[e = . . _ANSELHbits 0 1 -> -> 1 `i `uc ]
 "156
-[; ;ADCEL3.c: 156:         case 10:
-[e :U 199 ]
+[; ;ADCEL3.c: 156:             break;
+[e $U 187  ]
 "157
-[; ;ADCEL3.c: 157:             ANSELHbits.ANS10 = 1;
-[e = . . _ANSELHbits 0 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 157:         case 10:
+[e :U 199 ]
 "158
-[; ;ADCEL3.c: 158:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 158:             ANSELHbits.ANS10 = 1;
+[e = . . _ANSELHbits 0 2 -> -> 1 `i `uc ]
 "159
-[; ;ADCEL3.c: 159:         case 11:
-[e :U 200 ]
+[; ;ADCEL3.c: 159:             break;
+[e $U 187  ]
 "160
-[; ;ADCEL3.c: 160:             ANSELHbits.ANS11 = 1;
-[e = . . _ANSELHbits 0 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 160:         case 11:
+[e :U 200 ]
 "161
-[; ;ADCEL3.c: 161:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 161:             ANSELHbits.ANS11 = 1;
+[e = . . _ANSELHbits 0 3 -> -> 1 `i `uc ]
 "162
-[; ;ADCEL3.c: 162:         case 12:
-[e :U 201 ]
+[; ;ADCEL3.c: 162:             break;
+[e $U 187  ]
 "163
-[; ;ADCEL3.c: 163:             ANSELHbits.ANS12 = 1;
-[e = . . _ANSELHbits 0 4 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 163:         case 12:
+[e :U 201 ]
 "164
-[; ;ADCEL3.c: 164:             break;
-[e $U 187  ]
+[; ;ADCEL3.c: 164:             ANSELHbits.ANS12 = 1;
+[e = . . _ANSELHbits 0 4 -> -> 1 `i `uc ]
 "165
-[; ;ADCEL3.c: 165:         case 13:
-[e :U 202 ]
-"166
-[; ;ADCEL3.c: 166:             ANSELHbits.ANS13 = 1;
-[e = . . _ANSELHbits 0 5 -> -> 1 `i `uc ]
-"167
-[; ;ADCEL3.c: 167:             break;
+[; ;ADCEL3.c: 165:             break;
 [e $U 187  ]
+"166
+[; ;ADCEL3.c: 166:         case 13:
+[e :U 202 ]
+"167
+[; ;ADCEL3.c: 167:             ANSELHbits.ANS13 = 1;
+[e = . . _ANSELHbits 0 5 -> -> 1 `i `uc ]
 "168
-[; ;ADCEL3.c: 168:     }
+[; ;ADCEL3.c: 168:             break;
+[e $U 187  ]
+"169
+[; ;ADCEL3.c: 169:     }
 }
 [e $U 187  ]
 [e :U 188 ]
@@ -879,311 +882,311 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 13 `i 202
  187 ]
 [e :U 187 ]
-"169
-[; ;ADCEL3.c: 169: }
+"170
+[; ;ADCEL3.c: 170: }
 [e :UE 186 ]
 }
-"173
-[; ;ADCEL3.c: 173: void Select_ch(uint8_t channel) {
+"174
+[; ;ADCEL3.c: 174: void Select_ch(uint8_t channel) {
 [v _Select_ch `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Select_ch ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
-"174
-[; ;ADCEL3.c: 174:     switch (channel) {
+"175
+[; ;ADCEL3.c: 175:     switch (channel) {
 [e $U 205  ]
 {
-"175
-[; ;ADCEL3.c: 175:         case 0:
-[e :U 206 ]
 "176
-[; ;ADCEL3.c: 176:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 176:         case 0:
+[e :U 206 ]
 "177
-[; ;ADCEL3.c: 177:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 177:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "178
-[; ;ADCEL3.c: 178:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 178:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "179
-[; ;ADCEL3.c: 179:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 179:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "180
-[; ;ADCEL3.c: 180:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 180:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "181
-[; ;ADCEL3.c: 181:         case 1:
-[e :U 207 ]
+[; ;ADCEL3.c: 181:             break;
+[e $U 204  ]
 "182
-[; ;ADCEL3.c: 182:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 182:         case 1:
+[e :U 207 ]
 "183
-[; ;ADCEL3.c: 183:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 183:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
 "184
-[; ;ADCEL3.c: 184:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 184:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "185
-[; ;ADCEL3.c: 185:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 185:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "186
-[; ;ADCEL3.c: 186:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 186:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "187
-[; ;ADCEL3.c: 187:         case 2:
-[e :U 208 ]
+[; ;ADCEL3.c: 187:             break;
+[e $U 204  ]
 "188
-[; ;ADCEL3.c: 188:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 188:         case 2:
+[e :U 208 ]
 "189
-[; ;ADCEL3.c: 189:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 189:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "190
-[; ;ADCEL3.c: 190:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 190:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
 "191
-[; ;ADCEL3.c: 191:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 191:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "192
-[; ;ADCEL3.c: 192:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 192:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "193
-[; ;ADCEL3.c: 193:         case 3:
-[e :U 209 ]
+[; ;ADCEL3.c: 193:             break;
+[e $U 204  ]
 "194
-[; ;ADCEL3.c: 194:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 194:         case 3:
+[e :U 209 ]
 "195
-[; ;ADCEL3.c: 195:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 195:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
 "196
-[; ;ADCEL3.c: 196:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 196:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
 "197
-[; ;ADCEL3.c: 197:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 197:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "198
-[; ;ADCEL3.c: 198:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 198:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "199
-[; ;ADCEL3.c: 199:         case 4:
-[e :U 210 ]
+[; ;ADCEL3.c: 199:             break;
+[e $U 204  ]
 "200
-[; ;ADCEL3.c: 200:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 200:         case 4:
+[e :U 210 ]
 "201
-[; ;ADCEL3.c: 201:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 201:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "202
-[; ;ADCEL3.c: 202:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 202:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "203
-[; ;ADCEL3.c: 203:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 203:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
 "204
-[; ;ADCEL3.c: 204:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 204:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "205
-[; ;ADCEL3.c: 205:         case 5:
-[e :U 211 ]
+[; ;ADCEL3.c: 205:             break;
+[e $U 204  ]
 "206
-[; ;ADCEL3.c: 206:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 206:         case 5:
+[e :U 211 ]
 "207
-[; ;ADCEL3.c: 207:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 207:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
 "208
-[; ;ADCEL3.c: 208:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 208:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "209
-[; ;ADCEL3.c: 209:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 209:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
 "210
-[; ;ADCEL3.c: 210:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 210:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "211
-[; ;ADCEL3.c: 211:         case 6:
-[e :U 212 ]
+[; ;ADCEL3.c: 211:             break;
+[e $U 204  ]
 "212
-[; ;ADCEL3.c: 212:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 212:         case 6:
+[e :U 212 ]
 "213
-[; ;ADCEL3.c: 213:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 213:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "214
-[; ;ADCEL3.c: 214:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 214:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
 "215
-[; ;ADCEL3.c: 215:             ADCON0bits.CHS3 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 215:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
 "216
-[; ;ADCEL3.c: 216:             break;
-[e $U 204  ]
-"217
-[; ;ADCEL3.c: 217:         case 7:
-[e :U 213 ]
-"218
-[; ;ADCEL3.c: 218:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
-"219
-[; ;ADCEL3.c: 219:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
-"220
-[; ;ADCEL3.c: 220:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
-"221
-[; ;ADCEL3.c: 221:             ADCON0bits.CHS3 = 0;
+[; ;ADCEL3.c: 216:             ADCON0bits.CHS3 = 0;
 [e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
+"217
+[; ;ADCEL3.c: 217:             break;
+[e $U 204  ]
+"218
+[; ;ADCEL3.c: 218:         case 7:
+[e :U 213 ]
+"219
+[; ;ADCEL3.c: 219:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+"220
+[; ;ADCEL3.c: 220:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+"221
+[; ;ADCEL3.c: 221:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
 "222
-[; ;ADCEL3.c: 222:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 222:             ADCON0bits.CHS3 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "223
-[; ;ADCEL3.c: 223:         case 8:
-[e :U 214 ]
+[; ;ADCEL3.c: 223:             break;
+[e $U 204  ]
 "224
-[; ;ADCEL3.c: 224:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 224:         case 8:
+[e :U 214 ]
 "225
-[; ;ADCEL3.c: 225:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 225:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "226
-[; ;ADCEL3.c: 226:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 226:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "227
-[; ;ADCEL3.c: 227:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 227:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "228
-[; ;ADCEL3.c: 228:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 228:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
 "229
-[; ;ADCEL3.c: 229:         case 9:
-[e :U 215 ]
+[; ;ADCEL3.c: 229:             break;
+[e $U 204  ]
 "230
-[; ;ADCEL3.c: 230:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 230:         case 9:
+[e :U 215 ]
 "231
-[; ;ADCEL3.c: 231:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 231:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
 "232
-[; ;ADCEL3.c: 232:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 232:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "233
-[; ;ADCEL3.c: 233:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 233:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "234
-[; ;ADCEL3.c: 234:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 234:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
 "235
-[; ;ADCEL3.c: 235:         case 10:
-[e :U 216 ]
+[; ;ADCEL3.c: 235:             break;
+[e $U 204  ]
 "236
-[; ;ADCEL3.c: 236:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 236:         case 10:
+[e :U 216 ]
 "237
-[; ;ADCEL3.c: 237:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 237:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
 "238
-[; ;ADCEL3.c: 238:             ADCON0bits.CHS2 = 0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 238:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
 "239
-[; ;ADCEL3.c: 239:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
-"240
-[; ;ADCEL3.c: 240:             break;
-[e $U 204  ]
-"241
-[; ;ADCEL3.c: 241:         case 11:
-[e :U 217 ]
-"242
-[; ;ADCEL3.c: 242:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
-"243
-[; ;ADCEL3.c: 243:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
-"244
-[; ;ADCEL3.c: 244:             ADCON0bits.CHS2 = 0;
+[; ;ADCEL3.c: 239:             ADCON0bits.CHS2 = 0;
 [e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+"240
+[; ;ADCEL3.c: 240:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+"241
+[; ;ADCEL3.c: 241:             break;
+[e $U 204  ]
+"242
+[; ;ADCEL3.c: 242:         case 11:
+[e :U 217 ]
+"243
+[; ;ADCEL3.c: 243:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+"244
+[; ;ADCEL3.c: 244:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
 "245
-[; ;ADCEL3.c: 245:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 245:             ADCON0bits.CHS2 = 0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "246
-[; ;ADCEL3.c: 246:             break;
-[e $U 204  ]
+[; ;ADCEL3.c: 246:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
 "247
-[; ;ADCEL3.c: 247:         case 12:
-[e :U 218 ]
+[; ;ADCEL3.c: 247:             break;
+[e $U 204  ]
 "248
-[; ;ADCEL3.c: 248:             ADCON0bits.CHS0 = 0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+[; ;ADCEL3.c: 248:         case 12:
+[e :U 218 ]
 "249
-[; ;ADCEL3.c: 249:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
-"250
-[; ;ADCEL3.c: 250:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
-"251
-[; ;ADCEL3.c: 251:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
-"252
-[; ;ADCEL3.c: 252:             break;
-[e $U 204  ]
-"253
-[; ;ADCEL3.c: 253:         case 13:
-[e :U 219 ]
-"254
-[; ;ADCEL3.c: 254:             ADCON0bits.CHS0 = 1;
-[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
-"255
-[; ;ADCEL3.c: 255:             ADCON0bits.CHS1 = 0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
-"256
-[; ;ADCEL3.c: 256:             ADCON0bits.CHS2 = 1;
-[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
-"257
-[; ;ADCEL3.c: 257:             ADCON0bits.CHS3 = 1;
-[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
-"258
-[; ;ADCEL3.c: 258:             break;
-[e $U 204  ]
-"259
-[; ;ADCEL3.c: 259:         case 14:
-[e :U 220 ]
-"260
-[; ;ADCEL3.c: 260:             ADCON0bits.CHS0 = 0;
+[; ;ADCEL3.c: 249:             ADCON0bits.CHS0 = 0;
 [e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
-"261
-[; ;ADCEL3.c: 261:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
-"262
-[; ;ADCEL3.c: 262:             ADCON0bits.CHS2 = 1;
+"250
+[; ;ADCEL3.c: 250:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+"251
+[; ;ADCEL3.c: 251:             ADCON0bits.CHS2 = 1;
 [e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
-"263
-[; ;ADCEL3.c: 263:             ADCON0bits.CHS3 = 1;
+"252
+[; ;ADCEL3.c: 252:             ADCON0bits.CHS3 = 1;
 [e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
-"264
-[; ;ADCEL3.c: 264:             break;
+"253
+[; ;ADCEL3.c: 253:             break;
 [e $U 204  ]
-"265
-[; ;ADCEL3.c: 265:         case 15:
-[e :U 221 ]
-"266
-[; ;ADCEL3.c: 266:             ADCON0bits.CHS0 = 1;
+"254
+[; ;ADCEL3.c: 254:         case 13:
+[e :U 219 ]
+"255
+[; ;ADCEL3.c: 255:             ADCON0bits.CHS0 = 1;
 [e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
-"267
-[; ;ADCEL3.c: 267:             ADCON0bits.CHS1 = 1;
-[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
-"268
-[; ;ADCEL3.c: 268:             ADCON0bits.CHS2 = 1;
+"256
+[; ;ADCEL3.c: 256:             ADCON0bits.CHS1 = 0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
+"257
+[; ;ADCEL3.c: 257:             ADCON0bits.CHS2 = 1;
 [e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
-"269
-[; ;ADCEL3.c: 269:             ADCON0bits.CHS3 = 1;
+"258
+[; ;ADCEL3.c: 258:             ADCON0bits.CHS3 = 1;
 [e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
-"270
-[; ;ADCEL3.c: 270:             break;
+"259
+[; ;ADCEL3.c: 259:             break;
 [e $U 204  ]
+"260
+[; ;ADCEL3.c: 260:         case 14:
+[e :U 220 ]
+"261
+[; ;ADCEL3.c: 261:             ADCON0bits.CHS0 = 0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+"262
+[; ;ADCEL3.c: 262:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+"263
+[; ;ADCEL3.c: 263:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
+"264
+[; ;ADCEL3.c: 264:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
+"265
+[; ;ADCEL3.c: 265:             break;
+[e $U 204  ]
+"266
+[; ;ADCEL3.c: 266:         case 15:
+[e :U 221 ]
+"267
+[; ;ADCEL3.c: 267:             ADCON0bits.CHS0 = 1;
+[e = . . _ADCON0bits 1 2 -> -> 1 `i `uc ]
+"268
+[; ;ADCEL3.c: 268:             ADCON0bits.CHS1 = 1;
+[e = . . _ADCON0bits 1 3 -> -> 1 `i `uc ]
+"269
+[; ;ADCEL3.c: 269:             ADCON0bits.CHS2 = 1;
+[e = . . _ADCON0bits 1 4 -> -> 1 `i `uc ]
+"270
+[; ;ADCEL3.c: 270:             ADCON0bits.CHS3 = 1;
+[e = . . _ADCON0bits 1 5 -> -> 1 `i `uc ]
 "271
-[; ;ADCEL3.c: 271:     }
+[; ;ADCEL3.c: 271:             break;
+[e $U 204  ]
+"272
+[; ;ADCEL3.c: 272:     }
 }
 [e $U 204  ]
 [e :U 205 ]
@@ -1205,13 +1208,13 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 15 `i 221
  204 ]
 [e :U 204 ]
-"272
-[; ;ADCEL3.c: 272:     _delay((unsigned long)((200)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "273
-[; ;ADCEL3.c: 273:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;ADCEL3.c: 273:     _delay((unsigned long)((200)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 "274
-[; ;ADCEL3.c: 274: }
+[; ;ADCEL3.c: 274:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"275
+[; ;ADCEL3.c: 275: }
 [e :UE 203 ]
 }

@@ -73,6 +73,7 @@ void convert(char *data,float a, int place) //definition
     // Alistar configuracion de ADC
 void start_adc(uint8_t frec, uint8_t isr, uint8_t Vref, uint8_t justRL) {
     ADCON0bits.ADON = 1;
+    __delay_us(200);
     switch (frec) {
         case 1: // Fosc/2
             ADCON0bits.ADCS0 = 0;

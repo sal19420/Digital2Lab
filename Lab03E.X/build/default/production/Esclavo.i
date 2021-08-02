@@ -2923,90 +2923,112 @@ uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 # 33 "Esclavo.c" 2
+# 130 "Esclavo.c"
+uint8_t temporal = 0;
+uint8_t ADC1;
+uint8_t ADC2;
 
 
 
 
+void setup(void);
 
 
-uint8_t canal_act = 0;
-volatile uint8_t var_adc0 = 0;
-volatile uint8_t var_adc1 = 0;
-char adc0[10];
-char adc1[10];
-float conv0 = 0;
-float conv1 = 0;
 
-
- void configE(void);
-
-
- void __attribute__((picinterrupt(("")))) isr(void){
+void __attribute__((picinterrupt(("")))) isr(void){
    if(SSPIF == 1){
-       uint8_t bandera;
-       bandera = spiRead();
+       uint8_t comando;
+       comando = spiRead();
 
-       switch (bandera){
+       switch(comando) {
            case 1:
-               spiWrite(var_adc0);
+               spiWrite(ADC1);
                break;
+
            case 2:
-               spiWrite(var_adc1);
+               spiWrite(ADC2);
                break;
        }
 
+       PIR1bits.SSPIF = 0;
+    }
 
-        PIR1bits.SSPIF = 0;
+   if (PIR1bits.ADIF) {
+        if (ADCON0bits.CHS == 0) {
+            ADC1 = ADRESH;
+        }
+
+        else {
+            ADC2 = ADRESH;
+        }
+
+        PIR1bits.ADIF = 0;
     }
 }
+
+
+
 void main(void) {
-    configE();
-    start_adc(2, 1, 0, 0);
-    start_ch(0);
-    start_ch(1);
-    Select_ch(0);
+    setup();
 
 
-     while (1) {
-         if (PIR1bits.ADIF == 1) {
-            if (canal_act == 0) {
-                var_adc0 = ADRESH;
-                Select_ch(0);
-                canal_act++;
 
-            } else {
-                var_adc1 = ADRESH;
-                Select_ch(1);
-                canal_act--;
-
+    while(1){
+       if (ADCON0bits.GO == 0){
+            if (ADCON0bits.CHS == 0) {
+                ADCON0bits.CHS = 1;
             }
-            PIR1bits.ADIF = 0;
+            else {
+                ADCON0bits.CHS = 0;
+            }
+
+            _delay((unsigned long)((200)*(8000000/4000000.0)));
+            ADCON0bits.GO = 1;
         }
-# 104 "Esclavo.c"
-     }
+    }
     return;
 }
-void configE(void){
-    ANSEL = 0X03;
-    ANSELH = 0X00;
-
-    TRISA0 = 1;
-    TRISA1 = 1;
-
-    TRISB = 0X00;
-
-    TRISD = 0X00;
-
-    PORTB = 0X00;
-    PORTD = 0X00;
 
 
-        config_osc(7);
+
+void setup(void){
+    ANSEL = 0x03;
+    ANSELH = 0x00;
+
+    TRISA = 0x03;
+    TRISB = 0x00;
+    TRISD = 0x00;
+
+    PORTB = 0x00;
+    PORTD = 0x00;
+
+    TRISAbits.TRISA5 = 1;
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+
+    OSCCONbits.IRCF2 = 1;
+    OSCCONbits.IRCF1 = 1;
+    OSCCONbits.IRCF0 = 1;
+    OSCCONbits.SCS = 1;
+
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-    PIR1bits.SSPIF = 0;
+    PIE1bits.ADIE = 1;
     PIE1bits.SSPIE = 1;
-    TRISAbits.TRISA5 = 1;
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+    PIR1bits.ADIF = 0;
+    PIR1bits.SSPIF = 0;
+
+
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+
+    ADCON0bits.ADCS1 = 1;
+    ADCON0bits.CHS = 0;
+    _delay((unsigned long)((200)*(8000000/4000000.0)));
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((200)*(8000000/4000000.0)));
+
 }

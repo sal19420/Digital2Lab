@@ -2922,7 +2922,12 @@ uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 # 33 "Maestro.c" 2
-# 49 "Maestro.c"
+# 44 "Maestro.c"
+char adc0;
+char adc1;
+float conv0 = 0;
+float conv1 = 0;
+
 uint8_t sensor1;
 uint8_t sensor2;
 
@@ -2951,7 +2956,30 @@ void main(void) {
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
-# 99 "Maestro.c"
+       UARTInit(9600,1);
+       conv0 = (PORTB / (float) 255)*5;
+       conv1 = (PORTD / (float) 255)*5;
+       convert(adc0, conv0, 2);
+       convert(adc1, conv1, 2);
+        UARTInit(9600, 1);
+        UARTSendString("|", 3);
+        UARTSendString("S1", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc0, 6);
+        UARTSendString("V", 3);
+        UARTSendString(",", 3);
+        UARTSendString(" ", 3);
+
+        UARTSendString("|", 3);
+        UARTSendString("S2", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc1, 6);
+        UARTSendString("V", 3);
+        UARTSendString(",", 3);
+        UARTSendString(" ", 3);
+
     }
     return;
 }

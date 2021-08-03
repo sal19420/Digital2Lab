@@ -41,10 +41,10 @@
 //uint8_t canal_act = 0;
 //volatile uint8_t var_adc0 = 0;
 //volatile uint8_t var_adc1 = 0;
-//char adc0;
-//char adc1;
-//float conv0 = 0;
-//float conv1 = 0;
+char adc0;
+char adc1;
+float conv0 = 0;
+float conv1 = 0;
 //uint8_t contador;
 uint8_t sensor1;
 uint8_t sensor2;
@@ -74,27 +74,29 @@ void main(void) {
 //       PORTD = sensor2;
        __delay_ms(1);
        PORTCbits.RC2 = 1;       //Slave Deselect
-       
-//       convert(adc0, conv0, 2);
-//       convert(adc1, conv1, 2);
-//        UARTInit(9600, 1);
-//        UARTSendString("|", 3);
-//        UARTSendString("S1", 6);
-//        UARTSendString(":", 3);
-//        UARTSendString(" ", 3);
-//        UARTSendString(adc0, 6);
-//        UARTSendString("V", 3);
-//        UARTSendString(",", 3);
-//        UARTSendString(" ", 3);
-//        
-//        UARTSendString("|", 3);
-//        UARTSendString("S2", 6);
-//        UARTSendString(":", 3);
-//        UARTSendString(" ", 3);
-//        UARTSendString(adc1, 6);
-//        UARTSendString("V", 3);
-//        UARTSendString(",", 3);
-//        UARTSendString(" ", 3);
+       UARTInit(9600,1);
+       conv0 = (PORTB / (float) 255)*5;
+       conv1 = (PORTD / (float) 255)*5;
+       convert(adc0, conv0, 2);
+       convert(adc1, conv1, 2);
+        UARTInit(9600, 1);
+        UARTSendString("|", 3);
+        UARTSendString("S1", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc0, 6);
+        UARTSendString("V", 3);
+        UARTSendString(",", 3);
+        UARTSendString(" ", 3);
+        
+        UARTSendString("|", 3);
+        UARTSendString("S2", 6);
+        UARTSendString(":", 3);
+        UARTSendString(" ", 3);
+        UARTSendString(adc1, 6);
+        UARTSendString("V", 3);
+        UARTSendString(",", 3);
+        UARTSendString(" ", 3);
        
     }
     return;

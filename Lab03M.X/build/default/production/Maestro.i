@@ -2922,27 +2922,32 @@ uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
 # 33 "Maestro.c" 2
-# 44 "Maestro.c"
-char adc0;
-char adc1;
+# 42 "Maestro.c"
+volatile uint8_t var_adc0 = 0;
+volatile uint8_t var_adc1 = 0;
+char adc0[10];
+char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
 
-uint8_t sensor1;
-uint8_t sensor2;
+
+
 
 
  void config(void);
+ void Eusart(void);
+ void putch(char data);
 
 void main(void) {
 
     config();
     while(1){
+        Eusart();
         PORTCbits.RC2 = 0;
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
        spiWrite(1);
-       PORTB = spiRead();
+        var_adc0 = spiRead();
 
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
@@ -2952,34 +2957,20 @@ void main(void) {
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
        spiWrite(2);
-       PORTD = spiRead();
+       var_adc1 = spiRead();
 
        _delay((unsigned long)((1)*(8000000/4000.0)));
        PORTCbits.RC2 = 1;
-       UARTInit(9600,1);
-       conv0 = (PORTB / (float) 255)*5;
-       conv1 = (PORTD / (float) 255)*5;
+
+
+       conv0 = 0;
+       conv1 = 0;
+       conv0 = (var_adc0 / (float) 255)*5;
+       conv1 = (var_adc1 / (float) 255)*5;
+
        convert(adc0, conv0, 2);
        convert(adc1, conv1, 2);
-        UARTInit(9600, 1);
-        UARTSendString("|", 3);
-        UARTSendString("S1", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc0, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-
-        UARTSendString("|", 3);
-        UARTSendString("S2", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc1, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-
+# 108 "Maestro.c"
     }
     return;
 }
@@ -3001,8 +2992,45 @@ void config(void){
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
-   config_osc(7);
+    config_osc(7);
 
+
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
+
+    BAUDCTLbits.BRG16 = 1;
+
+    SPBRG = 207;
+    SPBRGH = 0;
+
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.CREN = 1;
+
+    TXSTAbits.TXEN = 1;
+   return;
+}
+void putch(char data){
+    while (TXIF == 0);
+    TXREG = data;
+    return;
+}
+
+void Eusart (void) {
+    _delay((unsigned long)((100)*(8000000/4000.0)));
+   printf("\rSensor 1: \r");
+   _delay((unsigned long)((100)*(8000000/4000.0)));
+     printf(adc0);
+   _delay((unsigned long)((100)*(8000000/4000.0)));
+   printf("\r---------------\r");
+
+
+   _delay((unsigned long)((100)*(8000000/4000.0)));
+   printf("\rSensor 2: \r");
+   _delay((unsigned long)((100)*(8000000/4000.0)));
+   printf(adc1);
+   _delay((unsigned long)((100)*(8000000/4000.0)));
+   printf("\r---------------\r");
 
    return;
 }

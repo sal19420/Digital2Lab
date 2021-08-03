@@ -39,28 +39,31 @@
 
 //**********Variables***********
 //uint8_t canal_act = 0;
-//volatile uint8_t var_adc0 = 0;
-//volatile uint8_t var_adc1 = 0;
-char adc0;
-char adc1;
+volatile uint8_t var_adc0 = 0;
+volatile uint8_t var_adc1 = 0;
+char adc0[10];
+char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
 //uint8_t contador;
-uint8_t sensor1;
-uint8_t sensor2;
+//uint8_t sensor1;
+//uint8_t sensor2;
 
  //**********Prototipos*********
  void config(void);
+ void Eusart(void);
+ void putch(char data);
  
 void main(void) {
-    
+//    UARTInit(9600,1);
     config();
     while(1){
+        Eusart();
         PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
        
        spiWrite(1);
-       PORTB = spiRead();
+        var_adc0 = spiRead();
 //       PORTB = sensor1;
        
        __delay_ms(1);
@@ -70,34 +73,38 @@ void main(void) {
        __delay_ms(1);
        
        spiWrite(2);
-       PORTD = spiRead();
+       var_adc1 = spiRead();
 //       PORTD = sensor2;
        __delay_ms(1);
        PORTCbits.RC2 = 1;       //Slave Deselect
-       UARTInit(9600,1);
-       conv0 = (PORTB / (float) 255)*5;
-       conv1 = (PORTD / (float) 255)*5;
+       
+       
+       conv0 = 0;
+       conv1 = 0;
+       conv0 = (var_adc0 / (float) 255)*5;
+       conv1 = (var_adc1 / (float) 255)*5;
+       
        convert(adc0, conv0, 2);
        convert(adc1, conv1, 2);
-        UARTInit(9600, 1);
-        UARTSendString("|", 3);
-        UARTSendString("S1", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc0, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
+//        
+//        UARTSendString("|", 3);
+//        UARTSendString("S1", 6);
+//        UARTSendString(":", 3);
+//        UARTSendString(" ", 3);
+//        UARTSendString(adc0, 6);
+//        UARTSendString("V", 3);
+//        UARTSendString(",", 3);
+//        UARTSendString(" ", 3);
+//        
+//        UARTSendString("|", 3);
+//        UARTSendString("S2", 6);
+//        UARTSendString(":", 3);
+//        UARTSendString(" ", 3);
+//        UARTSendString(adc1, 6);
+//        UARTSendString("V", 3);
+//        UARTSendString(",", 3);
+//        UARTSendString(" ", 3);
         
-        UARTSendString("|", 3);
-        UARTSendString("S2", 6);
-        UARTSendString(":", 3);
-        UARTSendString(" ", 3);
-        UARTSendString(adc1, 6);
-        UARTSendString("V", 3);
-        UARTSendString(",", 3);
-        UARTSendString(" ", 3);
-       
     }
     return;
 }
@@ -119,8 +126,45 @@ void config(void){
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
     //Configuracion del Oscilador
-   config_osc(7);
+    config_osc(7);
    
+    //Configuracion de TX y RX
+    TXSTAbits.SYNC  = 0;    //Modo asincrono
+    TXSTAbits.BRGH  = 1;    //Activamos la alta velocidad del Baud rate
+    
+    BAUDCTLbits.BRG16   = 1;    //Utilizamos los 16 bits del Baud rate
+    
+    SPBRG   = 207;  //Elegimos el baud rate 9600
+    SPBRGH  = 0;
+    
+    RCSTAbits.SPEN  = 1;    //Activamos los puertos seriales
+    RCSTAbits.RX9   = 0;    //No utilizamos los nueve bits
+    RCSTAbits.CREN  = 1;    //Activamos la recepción continua
+    
+    TXSTAbits.TXEN  = 1;    //Activamos la transmición
+   return;
+}
+void putch(char data){
+    while (TXIF == 0);      //Esperar a que se pueda enviar un nueva caracter
+    TXREG = data;           //Transmitir un caracter
+    return;
+}
+
+void Eusart (void) {
+    __delay_ms(100);         //El Eusart
+   printf("\rSensor 1: \r");
+   __delay_ms(100);
+     printf(adc0);
+   __delay_ms(100);
+   printf("\r---------------\r");
+   
+   
+   __delay_ms(100);
+   printf("\rSensor 2: \r");
+   __delay_ms(100);
+   printf(adc1);
+   __delay_ms(100);
+   printf("\r---------------\r");
    
    return;
 }

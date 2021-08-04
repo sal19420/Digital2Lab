@@ -51,7 +51,7 @@ strings STRING 0 1000 1000 A6 2
 functab ENTRY 0 3 3 9 2
 clrtext CODE 0 128B 128B 8 2
 config CONFIG 4 2007 2007 2 2
-$C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+$C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 end_init CODE 0 0 0 3 2
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
@@ -107,32 +107,32 @@ STRING 1800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab03M.X.production.o
-7EF cinit CODE >1211:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7EF cinit CODE >1214:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7EF cinit CODE >1276:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F0 cinit CODE >1277:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F1 cinit CODE >1278:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F2 cinit CODE >1279:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F3 cinit CODE >1282:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F4 cinit CODE >1283:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F5 cinit CODE >1284:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F6 cinit CODE >1285:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7F7 cinit CODE >1286:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7FC cinit CODE >1292:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7FC cinit CODE >1294:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7FD cinit CODE >1295:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-3 functab ENTRY >11333:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-3 functab ENTRY >11335:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-3 functab ENTRY >11336:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-3 functab ENTRY >11337:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-4 functab ENTRY >11338:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-5 functab ENTRY >11339:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-6 functab ENTRY >11340:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-7 functab ENTRY >11341:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-8 functab ENTRY >11343:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-8 functab ENTRY >11344:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-9 functab ENTRY >11347:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-9 functab ENTRY >11348:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
+7EF cinit CODE >1211:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7EF cinit CODE >1214:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7EF cinit CODE >1276:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F0 cinit CODE >1277:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F1 cinit CODE >1278:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F2 cinit CODE >1279:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F3 cinit CODE >1282:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F4 cinit CODE >1283:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F5 cinit CODE >1284:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F6 cinit CODE >1285:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7F7 cinit CODE >1286:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7FC cinit CODE >1292:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7FC cinit CODE >1294:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7FD cinit CODE >1295:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+3 functab ENTRY >11333:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+3 functab ENTRY >11335:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+3 functab ENTRY >11336:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+3 functab ENTRY >11337:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+4 functab ENTRY >11338:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+5 functab ENTRY >11339:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+6 functab ENTRY >11340:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+7 functab ENTRY >11341:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+8 functab ENTRY >11343:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+8 functab ENTRY >11344:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+9 functab ENTRY >11347:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+9 functab ENTRY >11348:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
 131C text28 CODE >15:C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
 131C text28 CODE >43:C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
 131E text28 CODE >45:C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
@@ -1107,16 +1107,16 @@ B3A maintext CODE >90:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03M.X\Maestro
 B5A maintext CODE >91:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03M.X\Maestro.c
 B7C maintext CODE >92:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03M.X\Maestro.c
 B81 maintext CODE >93:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03M.X\Maestro.c
-128B clrtext CODE >1263:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128B clrtext CODE >1264:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128C clrtext CODE >1265:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128C clrtext CODE >1266:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128D clrtext CODE >1267:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128E clrtext CODE >1268:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-128F clrtext CODE >1269:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-1290 clrtext CODE >1270:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-1291 clrtext CODE >1271:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
-1292 clrtext CODE >1272:C:\Users\Admin\AppData\Local\Temp\xcAsa8s.s
+128B clrtext CODE >1263:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128B clrtext CODE >1264:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128C clrtext CODE >1265:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128C clrtext CODE >1266:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128D clrtext CODE >1267:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128E clrtext CODE >1268:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+128F clrtext CODE >1269:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+1290 clrtext CODE >1270:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+1291 clrtext CODE >1271:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
+1292 clrtext CODE >1272:C:\Users\Admin\AppData\Local\Temp\xcAsbpg.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1143,14 +1143,14 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 18 0 ABS 0 strings -
 _RCIF 65 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 _TXIF 64 0 ABS 0 - dist/default/production\Lab03M.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+___sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 _adc0 B9 0 BANK1 1 bssBANK1 dist/default/production\Lab03M.X.production.o
 _adc1 AF 0 BANK1 1 bssBANK1 dist/default/production\Lab03M.X.production.o
 _atoi 2E 0 CODE 0 text26 dist/default/production\Lab03M.X.production.o
 _full A8 0 BANK1 1 bssBANK1 dist/default/production\Lab03M.X.production.o
 _main 13F2 0 CODE 0 maintext dist/default/production\Lab03M.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab03M.X.production.o
-start 0 0 CODE 0 init C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+start 0 0 CODE 0 init C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 ___flmul@aexp 5E 0 BANK0 1 cstackBANK0 dist/default/production\Lab03M.X.production.o
 ___flmul@bexp 5F 0 BANK0 1 cstackBANK0 dist/default/production\Lab03M.X.production.o
 ___flmul@prod 60 0 BANK0 1 cstackBANK0 dist/default/production\Lab03M.X.production.o
@@ -1175,12 +1175,12 @@ __Hpowerup 0 0 CODE 0 powerup -
 printf@f 2D 0 BANK0 1 cstackBANK0 dist/default/production\Lab03M.X.production.o
 __size_of__doprnt 0 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 ?_concat 35 0 BANK0 1 cstackBANK0 dist/default/production\Lab03M.X.production.o
-intlevel0 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-intlevel1 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-intlevel2 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-intlevel3 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-intlevel4 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-intlevel5 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+intlevel0 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+intlevel1 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+intlevel2 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+intlevel3 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+intlevel4 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+intlevel5 6 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 strcat@from 70 0 COMMON 1 cstackCOMMON dist/default/production\Lab03M.X.production.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab03M.X.production.o
@@ -1225,8 +1225,8 @@ __size_of_isdigit 0 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 __end_of_concat 2876 0 CODE 0 text19 dist/default/production\Lab03M.X.production.o
 __end_of_config 2788 0 CODE 0 text14 dist/default/production\Lab03M.X.production.o
 __Umul8_16@multiplicand 70 0 COMMON 1 cstackCOMMON dist/default/production\Lab03M.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
-___stacklo 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+___stackhi 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
+___stacklo 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 _dpowers 2020 0 STRING 0 strings dist/default/production\Lab03M.X.production.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 ___lwdiv@quotient 75 0 COMMON 1 cstackCOMMON dist/default/production\Lab03M.X.production.o
@@ -1256,7 +1256,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Lab03M.X.production.o
 __end_of_printf 25AA 0 CODE 0 text18 dist/default/production\Lab03M.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+___int_sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 __Hbank0 18 0 ABS 0 bank0 -
 __Hbank1 18 0 ABS 0 bank1 -
 __Hbank2 18 0 ABS 0 bank2 -
@@ -1328,7 +1328,7 @@ strcat@to 72 0 COMMON 1 cstackCOMMON dist/default/production\Lab03M.X.production
 ___xxtofl 2BBA 0 CODE 0 text5 dist/default/production\Lab03M.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
 __stringtab 2000 0 STRING 0 strings dist/default/production\Lab03M.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Admin\AppData\Local\Temp\xcAsa8s.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Admin\AppData\Local\Temp\xcAsbpg.o
 __end_of___xxtofl 2D32 0 CODE 0 text5 dist/default/production\Lab03M.X.production.o
 __fptable 6 0 ENTRY 0 functab dist/default/production\Lab03M.X.production.o
 __size_of___flge 0 0 ABS 0 - dist/default/production\Lab03M.X.production.o

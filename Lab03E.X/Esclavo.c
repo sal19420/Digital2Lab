@@ -73,7 +73,7 @@ void main(void) {
     start_ch(1); //Habilita el pin del Puerto RA1.
     Select_ch(0); //Selecciona el canal e inicia la conversion.
     
-  
+                
      while (1) {
          if (PIR1bits.ADIF == 1 && ADCON0bits.GO == 0) {
             if (canal_act == 0) {

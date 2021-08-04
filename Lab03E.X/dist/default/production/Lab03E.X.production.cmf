@@ -31,7 +31,7 @@ bssBANK0 BANK0 1 20 20 19 1
 clrtext CODE 0 2E2 2E2 8 2
 bssCOMMON COMMON 1 77 77 6 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+$C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 E E 3 2
 config CONFIG 4 2007 2007 2 2
@@ -81,22 +81,22 @@ STRING 2F7-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Lab03E.X.production.o
-11 cinit CODE >971:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-11 cinit CODE >974:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-11 cinit CODE >1021:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-12 cinit CODE >1022:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-13 cinit CODE >1023:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-14 cinit CODE >1024:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-15 cinit CODE >1025:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-16 cinit CODE >1026:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-17 cinit CODE >1029:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-18 cinit CODE >1030:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-19 cinit CODE >1031:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-1A cinit CODE >1032:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-1B cinit CODE >1033:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-20 cinit CODE >1039:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-20 cinit CODE >1041:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-21 cinit CODE >1042:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
+11 cinit CODE >971:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+11 cinit CODE >974:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+11 cinit CODE >1021:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+12 cinit CODE >1022:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+13 cinit CODE >1023:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+14 cinit CODE >1024:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+15 cinit CODE >1025:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+16 cinit CODE >1026:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+17 cinit CODE >1029:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+18 cinit CODE >1030:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+19 cinit CODE >1031:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+1A cinit CODE >1032:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+1B cinit CODE >1033:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+20 cinit CODE >1039:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+20 cinit CODE >1041:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+21 cinit CODE >1042:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
 4 intentry CODE >51:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Esclavo.c
 2EA text10 CODE >71:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Librerias.c
 2EA text10 CODE >73:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Librerias.c
@@ -433,16 +433,16 @@ FD text2 CODE >100:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\ADCEL3.c
 1F3 maintext CODE >91:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Esclavo.c
 1FA maintext CODE >92:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Esclavo.c
 1FD maintext CODE >93:C:\Users\Admin\MPLABXProjects\Digital2Lab\Lab03E.X\Esclavo.c
-2E2 clrtext CODE >1008:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E2 clrtext CODE >1009:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E3 clrtext CODE >1010:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E3 clrtext CODE >1011:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E4 clrtext CODE >1012:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E5 clrtext CODE >1013:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E6 clrtext CODE >1014:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E7 clrtext CODE >1015:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E8 clrtext CODE >1016:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
-2E9 clrtext CODE >1017:C:\Users\Admin\AppData\Local\Temp\xcAs8hc.s
+2E2 clrtext CODE >1008:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E2 clrtext CODE >1009:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E3 clrtext CODE >1010:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E3 clrtext CODE >1011:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E4 clrtext CODE >1012:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E5 clrtext CODE >1013:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E6 clrtext CODE >1014:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E7 clrtext CODE >1015:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E8 clrtext CODE >1016:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
+2E9 clrtext CODE >1017:C:\Users\Admin\AppData\Local\Temp\xcAs3rg.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -466,11 +466,11 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 __end_of_Select_ch 17A 0 CODE 0 text6 dist/default/production\Lab03E.X.production.o
 _TXIF 64 0 ABS 0 - dist/default/production\Lab03E.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+___sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 _main 346 0 CODE 0 maintext dist/default/production\Lab03E.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 __size_of_Select_ch 0 0 ABS 0 - dist/default/production\Lab03E.X.production.o
-start 1C 0 CODE 0 init C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+start 1C 0 CODE 0 init C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __size_of_config_osc 0 0 ABS 0 - dist/default/production\Lab03E.X.production.o
@@ -480,12 +480,12 @@ _Select_ch 48 0 CODE 0 text6 dist/default/production\Lab03E.X.production.o
 __end_of_start_ch 346 0 CODE 0 text1 dist/default/production\Lab03E.X.production.o
 start_adc@Vref 3A 0 BANK0 1 cstackBANK0 dist/default/production\Lab03E.X.production.o
 start_adc@frec 3E 0 BANK0 1 cstackBANK0 dist/default/production\Lab03E.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Lab03E.X.production.o
@@ -500,8 +500,8 @@ __size_of_spiRead 0 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 _canal_act 38 0 BANK0 1 bssBANK0 dist/default/production\Lab03E.X.production.o
 __end_of_start_adc 264 0 CODE 0 text2 dist/default/production\Lab03E.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
-___stacklo 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+___stackhi 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
+___stacklo 0 0 ABS 0 - C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 __size_of_start_adc 0 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 _var_adc0 7C 0 COMMON 1 bssCOMMON dist/default/production\Lab03E.X.production.o
 _var_adc1 7B 0 COMMON 1 bssCOMMON dist/default/production\Lab03E.X.production.o
@@ -518,7 +518,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 start_ch@channel 3B 0 BANK0 1 cstackBANK0 dist/default/production\Lab03E.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+___int_sp 0 0 STACK 2 stack C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -566,7 +566,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 config_osc@frec 3B 0 BANK0 1 cstackBANK0 dist/default/production\Lab03E.X.production.o
 __end_of_isr 524 0 CODE 0 text7 dist/default/production\Lab03E.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Admin\AppData\Local\Temp\xcAs8hc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Admin\AppData\Local\Temp\xcAs3rg.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _RCSTAbits 18 0 ABS 0 - dist/default/production\Lab03E.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Lab03E.X.production.o

@@ -2835,6 +2835,39 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 # 30 "Maestro.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 1 3
+# 14 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 3
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+# 36 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 3
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+# 31 "Maestro.c" 2
+
 # 1 "./LibreriasL3.h" 1
 
 
@@ -2885,7 +2918,7 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 31 "Maestro.c" 2
+# 32 "Maestro.c" 2
 
 # 1 "./ADCL3.h" 1
 # 13 "./ADCL3.h"
@@ -2901,7 +2934,7 @@ void convert(char *data,float a, int place);
 void start_adc(uint8_t frec, uint8_t isr, uint8_t Vref, uint8_t justRL);
 void Select_ch(uint8_t channel);
 void start_ch(uint8_t channel);
-# 32 "Maestro.c" 2
+# 33 "Maestro.c" 2
 
 # 1 "./USARTL3.h" 1
 # 14 "./USARTL3.h"
@@ -2921,28 +2954,30 @@ void UARTSendString(const char* str, const uint8_t max_length);
 uint8_t UARTDataReady();
 char UARTReadChar();
 uint8_t UARTReadString(char *buf, uint8_t max_length);
-# 33 "Maestro.c" 2
-# 42 "Maestro.c"
+# 34 "Maestro.c" 2
+# 43 "Maestro.c"
 volatile uint8_t var_adc0 = 0;
 volatile uint8_t var_adc1 = 0;
 char adc0[10];
 char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
-
-
-
+char cen, dec, uni;
+char var;
+char con;
+int full;
 
 
  void config(void);
  void Eusart(void);
  void putch(char data);
 
+
 void main(void) {
 
     config();
     while(1){
-        Eusart();
+
         PORTCbits.RC2 = 0;
        _delay((unsigned long)((1)*(8000000/4000.0)));
 
@@ -2970,7 +3005,8 @@ void main(void) {
 
        convert(adc0, conv0, 2);
        convert(adc1, conv1, 2);
-# 108 "Maestro.c"
+       Eusart();
+        PORTB = full;
     }
     return;
 }
@@ -3010,6 +3046,7 @@ void config(void){
     TXSTAbits.TXEN = 1;
    return;
 }
+# 147 "Maestro.c"
 void putch(char data){
     while (TXIF == 0);
     TXREG = data;
@@ -3032,5 +3069,62 @@ void Eusart (void) {
    _delay((unsigned long)((100)*(8000000/4000.0)));
    printf("\r---------------\r");
 
+    printf("Ingresar Centena: Rango(0-2)\r");
+      defensa1:
+       while(RCIF == 0);
+        cen = RCREG -48;
+
+       while(RCREG > '2'){
+           goto defensa1;
+       }
+
+    printf("Ingresar Decenas: \r");
+      defensa2:
+        while(RCIF == 0);
+         dec = RCREG -48;
+
+        if(cen == 2){
+           while(RCREG > '5'){
+               goto defensa2;
+           }
+       }
+
+    printf("Ingresar Unidades: \r");
+      defensa3:
+       while(RCIF == 0);
+        uni = RCREG - 48;
+
+       if(cen == 2 && dec == 5){
+           while(RCREG > '5'){
+               goto defensa3;
+           }
+       }
+      con = concat(cen, dec);
+      full = concat(con, uni);
+      _delay((unsigned long)((250)*(8000000/4000.0)));
+    printf("El numero elegido es: %d", full);
+
    return;
+}
+int concat(int a, int b)
+{
+
+    char s1[20];
+    char s2[20];
+
+
+
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+
+
+
+    strcat(s1, s2);
+
+
+
+    int c = atoi(s1);
+
+
+    return c;
 }

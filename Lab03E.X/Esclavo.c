@@ -68,7 +68,7 @@ float conv1 = 0;
 }
 void main(void) {
     configE();
-    start_adc(3, 0, 0, 0); //Fosc/8, No ISR de ADC, Ref Vdd y Vcc, a la izquierda
+    start_adc(3, 0, 0, 0); //Fosc/32, No ISR de ADC, Ref Vdd y Vcc, a la izquierda
     start_ch(0); //Habilita el pin del Puerto RA0.
     start_ch(1); //Habilita el pin del Puerto RA1.
     Select_ch(0); //Selecciona el canal e inicia la conversion.

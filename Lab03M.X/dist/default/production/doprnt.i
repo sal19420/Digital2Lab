@@ -302,12 +302,24 @@ extern double round(double);
 
 
 #pragma warning disable 350
+# 358 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+const static unsigned int dpowers[] = {1, 10, 100, 1000, 10000,
+
+
+
+
+        };
 # 463 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
 int
-# 477 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
-printf(const char * f, ...)
+
+
+
+
+
+
+
+_doprnt(struct __prbuf * pb, register const char * f, register va_list ap)
 {
- va_list ap;
 # 512 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
  char c;
 # 521 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
@@ -327,7 +339,7 @@ printf(const char * f, ...)
  const char * cp;
 
 
- *ap = __va_start();
+
 
 
  while((c = *f++)) {
@@ -335,7 +347,7 @@ printf(const char * f, ...)
   if(c != '%')
 
   {
-   (putch(c) );
+   do { if(pb->func) (pb->func((char)(c))); else ((*pb->ptr++ = (char)(c))); } while(0);
    continue;
   }
 
@@ -348,6 +360,10 @@ printf(const char * f, ...)
 
   case 0:
    goto alldone;
+# 723 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+  case 'd':
+  case 'i':
+   break;
 # 828 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
   default:
 
@@ -356,15 +372,58 @@ printf(const char * f, ...)
 
 
 
-   (putch(c) );
+   do { if(pb->func) (pb->func((char)(c))); else ((*pb->ptr++ = (char)(c))); } while(0);
    continue;
 # 848 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
   }
+# 1279 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+  {
+
+
+
+
+
+    val = (unsigned int)(*(int *)__va_arg((*(int **)ap), (int)0));
+
+   if((int)val < 0) {
+    flag |= 0x03;
+    val = -val;
+   }
+
+  }
+# 1331 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+   for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
+    if(val < dpowers[c])
+     break;
 # 1448 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
   {
+# 1464 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+   if(flag & 0x03)
+    do { if(pb->func) (pb->func((char)('-'))); else ((*pb->ptr++ = (char)('-'))); } while(0);
 # 1495 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
   }
-# 1559 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+
+
+  prec = c;
+
+  while(prec--) {
+
+
+
+   {
+# 1515 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+    c = (val / dpowers[(unsigned char)prec]) % 10 + '0';
+# 1549 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\sources\\c90\\common\\doprnt.c"
+   }
+   do { if(pb->func) (pb->func((char)(c))); else ((*pb->ptr++ = (char)(c))); } while(0);
+  }
+
+
+
+
+
+
+
  }
 
 alldone:

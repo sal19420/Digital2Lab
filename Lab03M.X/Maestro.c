@@ -28,6 +28,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> // Concatenar
 #include "LibreriasL3.h"
 #include "ADCL3.h"
 #include "USARTL3.h"
@@ -45,20 +46,22 @@ char adc0[10];
 char adc1[10];
 float conv0 = 0;
 float conv1 = 0;
-//uint8_t contador;
-//uint8_t sensor1;
-//uint8_t sensor2;
+char cen, dec, uni;
+char var;
+char con;
+int full;
 
  //**********Prototipos*********
  void config(void);
  void Eusart(void);
  void putch(char data);
+// char division (char valor);
  
 void main(void) {
 //    UARTInit(9600,1);
     config();
     while(1){
-        Eusart();
+        
         PORTCbits.RC2 = 0;       //Slave Select
        __delay_ms(1);
        
@@ -86,25 +89,8 @@ void main(void) {
        
        convert(adc0, conv0, 2);
        convert(adc1, conv1, 2);
-//        
-//        UARTSendString("|", 3);
-//        UARTSendString("S1", 6);
-//        UARTSendString(":", 3);
-//        UARTSendString(" ", 3);
-//        UARTSendString(adc0, 6);
-//        UARTSendString("V", 3);
-//        UARTSendString(",", 3);
-//        UARTSendString(" ", 3);
-//        
-//        UARTSendString("|", 3);
-//        UARTSendString("S2", 6);
-//        UARTSendString(":", 3);
-//        UARTSendString(" ", 3);
-//        UARTSendString(adc1, 6);
-//        UARTSendString("V", 3);
-//        UARTSendString(",", 3);
-//        UARTSendString(" ", 3);
-        
+       Eusart();
+        PORTB = full;
     }
     return;
 }
@@ -144,6 +130,20 @@ void config(void){
     TXSTAbits.TXEN  = 1;    //Activamos la transmición
    return;
 }
+
+//char division (char valor){
+//    hundreds = valor/50;//esto me divide entre 100 y se queda con el entero
+//    residuo = valor%100; //el residuo de lo que estoy operando
+//    tens = residuo/10; 
+//    units = residuo%10; //se queda con las units de las tens
+//    // Se les suma 47 para que me den al valor requerido
+//    hundreds = hundreds + 48;
+//    tens = tens + 48;
+//    units = units + 48;
+//} 
+
+
+
 void putch(char data){
     while (TXIF == 0);      //Esperar a que se pueda enviar un nueva caracter
     TXREG = data;           //Transmitir un caracter
@@ -166,5 +166,62 @@ void Eusart (void) {
    __delay_ms(100);
    printf("\r---------------\r");
    
+    printf("Ingresar Centena: Rango(0-2)\r");
+      defensa1:  
+       while(RCIF == 0);
+        cen = RCREG -48;  
+
+       while(RCREG > '2'){ 
+           goto defensa1;
+       }
+    
+    printf("Ingresar Decenas: \r");
+      defensa2:
+        while(RCIF == 0); 
+         dec = RCREG -48; 
+
+        if(cen == 2){
+           while(RCREG > '5'){
+               goto defensa2;
+           }
+       }
+
+    printf("Ingresar Unidades: \r");
+      defensa3:
+       while(RCIF == 0); 
+        uni = RCREG - 48;
+
+       if(cen == 2 && dec == 5){
+           while(RCREG > '5'){
+               goto defensa3;
+           }
+       }
+      con = concat(cen, dec);
+      full = concat(con, uni);
+      __delay_ms(250);
+    printf("El numero elegido es: %d", full);
+
    return;
+}
+int concat(int a, int b)
+{
+ 
+    char s1[20];
+    char s2[20];
+//    char s3[20]
+ 
+    // Convert both the integers to string
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+//    sprintf(s2, "%d", c);
+ 
+    // Concatenate both strings
+    strcat(s1, s2);
+ 
+    // Convert the concatenated string
+    // to integer
+    int c = atoi(s1);
+ 
+    // return the formed integer
+    return c;
 }

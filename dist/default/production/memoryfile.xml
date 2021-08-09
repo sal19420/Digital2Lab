@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\Digital2Lab.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>8192</length>
+      <used>4740</used>
+      <free>3452</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>368</length>
+      <used>147</used>
+      <free>221</free>
+    </memory>
+  </executable>
+</project>

@@ -55,10 +55,10 @@ int full;
  void config(void);
  void Eusart(void);
  void putch(char data);
-// char division (char valor);
+
  
 void main(void) {
-//    UARTInit(9600,1);
+
     config();
     while(1){
         

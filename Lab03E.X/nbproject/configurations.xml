@@ -69,7 +69,7 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <item path="ADCEL3.c" ex="false" overriding="false">
+      <item path="ADCEL3.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -79,7 +79,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="ADCEL3.h" ex="false" overriding="false">
+      <item path="ADCEL3.h" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -89,7 +89,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="Esclavo.c" ex="false" overriding="false">
+      <item path="Esclavo.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -179,7 +179,7 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
-      <item path="Librerias.c" ex="false" overriding="false">
+      <item path="Librerias.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -189,7 +189,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="Librerias.h" ex="false" overriding="false">
+      <item path="Librerias.h" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -1219,7 +1219,7 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
-      <item path="USARTEL3.c" ex="false" overriding="false">
+      <item path="USARTEL3.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -1229,7 +1229,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="USARTEL3.h" ex="false" overriding="false">
+      <item path="USARTEL3.h" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>

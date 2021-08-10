@@ -2832,6 +2832,39 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 # 27 "MasterI2C.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 1 3
+# 14 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 3
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+# 36 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 3
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+# 28 "MasterI2C.c" 2
+
 
 # 1 "./I2CL4M.h" 1
 
@@ -2880,7 +2913,7 @@ unsigned short I2C_Master_Read(unsigned short a);
 
 
 void I2C_Slave_Init(uint8_t address);
-# 29 "MasterI2C.c" 2
+# 30 "MasterI2C.c" 2
 
 # 1 "./ADCL4.h" 1
 # 13 "./ADCL4.h"
@@ -2896,7 +2929,7 @@ void convert(char *data,float a, int place);
 void start_adc(uint8_t frec, uint8_t isr, uint8_t Vref, uint8_t justRL);
 void Select_ch(uint8_t channel);
 void start_ch(uint8_t channel);
-# 30 "MasterI2C.c" 2
+# 31 "MasterI2C.c" 2
 
 # 1 "./LibreriasL4.h" 1
 
@@ -2948,7 +2981,7 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 31 "MasterI2C.c" 2
+# 32 "MasterI2C.c" 2
 
 # 1 "./LCDL4.h" 1
 # 14 "./LCDL4.h"
@@ -2975,7 +3008,7 @@ void Lcd_Write_String(char *a);
 void Lcd_Shift_Right(void);
 
 void Lcd_Shift_Left(void);
-# 32 "MasterI2C.c" 2
+# 33 "MasterI2C.c" 2
 
 
 
@@ -2989,6 +3022,10 @@ float conv0 = 0;
 float conv1 = 0;
 uint8_t var_adc0 = 0;
 volatile uint8_t contador = 0;
+char STH[3];
+int8_t sensor;
+char T[10];
+
 
 
 
@@ -3006,10 +3043,6 @@ void main(void) {
     while(1){
 
 
-
-
-
-
         I2C_Master_Start();
         I2C_Master_Write(0x51);
         var_adc0 = I2C_Master_Read(0);
@@ -3022,10 +3055,29 @@ void main(void) {
         I2C_Master_Stop();
         _delay((unsigned long)((200)*(8000000/4000.0)));
 
+        I2C_Master_Start();
+        I2C_Master_Write(0x9A);
+        I2C_Master_Write(0x00);
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+        I2C_Master_Start();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        I2C_Master_Write(0x9B);
+        sensor= I2C_Master_Read(0);
+        I2C_Master_Stop();
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+
+
+
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("ADC:");
         Lcd_Set_Cursor(1, 8);
         Lcd_Write_String("CONT");
+        Lcd_Set_Cursor(1, 13);
+        Lcd_Write_String("TC");
         conv0 = 0;
         conv1 = 0;
 
@@ -3042,6 +3094,10 @@ void main(void) {
         convert(cont, contador, 2);
          Lcd_Set_Cursor(2, 7);
         Lcd_Write_String(cont);
+
+        convert(T, sensor, 2);
+         Lcd_Set_Cursor(2, 13);
+        Lcd_Write_String(T);
 
 
 
@@ -3070,4 +3126,26 @@ void setup(void){
     OSCCONbits.SCS = 1;
 
     I2C_Master_Init(100000);
+}
+int concat(int a, int b)
+{
+
+    char s1[20];
+    char s2[20];
+
+
+
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+
+
+
+    strcat(s1, s2);
+
+
+
+    int c = atoi(s1);
+
+
+    return c;
 }

@@ -28,12 +28,16 @@ SPI_ACTIVE_2_IDLE 64
 [v _convert convert `(v  1 e 1 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 "43 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\isdigit.c
+[v _isdigit isdigit `(b  1 e 0 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "242
@@ -42,6 +46,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+"13 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\strcat.c
+[v _strcat strcat `(*.4uc  1 e 1 0 ]
 "15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\Umul8_16.c
@@ -80,9 +88,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
 "70 C:\Users\Admin\MPLABXProjects\Digital2Lab\LibreriasL4.c
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
-"55 C:\Users\Admin\MPLABXProjects\Digital2Lab\MasterI2C.c
+"60 C:\Users\Admin\MPLABXProjects\Digital2Lab\MasterI2C.c
 [v _main main `(v  1 e 1 0 ]
-"107
+"131
 [v _setup setup `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -92,15 +100,15 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S428 . 1 `uc 1 RE0 1 0 :1:0 
+[s S457 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S433 . 1 `S428 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES433  1 e 1 @9 ]
-[s S289 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S462 . 1 `S457 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES462  1 e 1 @9 ]
+[s S318 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -109,19 +117,19 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S297 . 1 `S289 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES297  1 e 1 @12 ]
+[u S326 . 1 `S318 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES326  1 e 1 @12 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S224 . 1 `uc 1 ADON 1 0 :1:0 
+[s S253 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S229 . 1 `uc 1 . 1 0 :1:0 
+[s S258 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -130,19 +138,19 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S238 . 1 `uc 1 . 1 0 :1:0 
+[s S267 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S241 . 1 `uc 1 . 1 0 :1:0 
+[s S270 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S244 . 1 `S224 1 . 1 0 `S229 1 . 1 0 `S238 1 . 1 0 `S241 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES244  1 e 1 @31 ]
+[u S273 . 1 `S253 1 . 1 0 `S258 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES273  1 e 1 @31 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S145 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S174 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -152,13 +160,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S154 . 1 `S145 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES154  1 e 1 @135 ]
+[u S183 . 1 `S174 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES183  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S270 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S299 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -167,8 +175,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S278 . 1 `S270 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES278  1 e 1 @140 ]
+[u S307 . 1 `S299 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES307  1 e 1 @140 ]
 [s S86 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
@@ -185,7 +193,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _OSCCONbits OSCCONbits `VES97  1 e 1 @143 ]
 "1979
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
-[s S166 . 1 `uc 1 SEN 1 0 :1:0 
+[s S195 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -195,13 +203,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1996
-[u S175 . 1 `S166 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES175  1 e 1 @145 ]
+[u S204 . 1 `S195 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES204  1 e 1 @145 ]
 "2048
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S502 . 1 `uc 1 BF 1 0 :1:0 
+[s S531 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -211,51 +219,51 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S511 . 1 `uc 1 . 1 0 :2:0 
+[s S540 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S516 . 1 `uc 1 . 1 0 :2:0 
+[s S545 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S522 . 1 `uc 1 . 1 0 :2:0 
+[s S551 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S527 . 1 `uc 1 . 1 0 :2:0 
+[s S556 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S532 . 1 `uc 1 . 1 0 :2:0 
+[s S561 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S537 . 1 `uc 1 . 1 0 :2:0 
+[s S566 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S542 . 1 `S502 1 . 1 0 `S511 1 . 1 0 `S516 1 . 1 0 `S522 1 . 1 0 `S527 1 . 1 0 `S532 1 . 1 0 `S537 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES542  1 e 1 @148 ]
-[s S308 . 1 `uc 1 . 1 0 :4:0 
+[u S571 . 1 `S531 1 . 1 0 `S540 1 . 1 0 `S545 1 . 1 0 `S551 1 . 1 0 `S556 1 . 1 0 `S561 1 . 1 0 `S566 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES571  1 e 1 @148 ]
+[s S337 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2991
-[u S314 . 1 `S308 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES314  1 e 1 @159 ]
+[u S343 . 1 `S337 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES343  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
-[s S323 . 1 `uc 1 ANS0 1 0 :1:0 
+[s S352 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
@@ -265,11 +273,11 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ANS7 1 0 :1:7 
 ]
 "3404
-[u S332 . 1 `S323 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES332  1 e 1 @392 ]
+[u S361 . 1 `S352 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES361  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-[s S344 . 1 `uc 1 ANS8 1 0 :1:0 
+[s S373 . 1 `uc 1 ANS8 1 0 :1:0 
 `uc 1 ANS9 1 0 :1:1 
 `uc 1 ANS10 1 0 :1:2 
 `uc 1 ANS11 1 0 :1:3 
@@ -277,8 +285,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ANS13 1 0 :1:5 
 ]
 "3464
-[u S351 . 1 `S344 1 . 1 0 ]
-[v _ANSELHbits ANSELHbits `VES351  1 e 1 @393 ]
+[u S380 . 1 `S373 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES380  1 e 1 @393 ]
 "3896
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "4040
@@ -293,27 +301,31 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC4 TRISC4 `VEb  1 e 0 @1084 ]
 "4463
 [v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"39 C:\Users\Admin\MPLABXProjects\Digital2Lab\MasterI2C.c
+"40 C:\Users\Admin\MPLABXProjects\Digital2Lab\MasterI2C.c
 [v _adc0 adc0 `[10]uc  1 e 10 0 ]
-"40
-[v _cont cont `[10]uc  1 e 10 0 ]
 "41
-[v _conv0 conv0 `f  1 e 4 0 ]
+[v _cont cont `[10]uc  1 e 10 0 ]
 "42
-[v _conv1 conv1 `f  1 e 4 0 ]
+[v _conv0 conv0 `f  1 e 4 0 ]
 "43
-[v _var_adc0 var_adc0 `uc  1 e 1 0 ]
+[v _conv1 conv1 `f  1 e 4 0 ]
 "44
+[v _var_adc0 var_adc0 `uc  1 e 1 0 ]
+"45
 [v _contador contador `VEuc  1 e 1 0 ]
-"55
+"47
+[v _sensor sensor `c  1 e 1 0 ]
+"48
+[v _T T `[10]uc  1 e 10 0 ]
+"60
 [v _main main `(v  1 e 1 0 ]
 {
-"103
+"127
 } 0
-"107
+"131
 [v _setup setup `(v  1 e 1 0 ]
 {
-"126
+"150
 } 0
 "13 C:\Users\Admin\MPLABXProjects\Digital2Lab\I2CL4M.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -338,13 +350,13 @@ SPI_ACTIVE_2_IDLE 64
 {
 [v convert@data data `*.4uc  1 a 1 wreg ]
 "19
-[v convert@x x `f  1 a 4 5 ]
+[v convert@x x `f  1 a 4 4 ]
 "21
 [v convert@mu mu `i  1 a 2 13 ]
 "20
 [v convert@digits digits `i  1 a 2 11 ]
 "21
-[v convert@i i `i  1 a 2 9 ]
+[v convert@i i `i  1 a 2 8 ]
 "22
 [v convert@j j `i  1 a 2 2 ]
 "18
@@ -354,7 +366,7 @@ SPI_ACTIVE_2_IDLE 64
 [v convert@a a `f  1 p 4 70 ]
 [v convert@place place `i  1 p 2 74 ]
 "18
-[v convert@data data `*.4uc  1 a 1 4 ]
+[v convert@data data `*.4uc  1 a 1 10 ]
 "72
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\xxtofl.c
@@ -418,17 +430,17 @@ SPI_ACTIVE_2_IDLE 64
 "8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S907 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S936 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S912 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S915 . 4 `l 1 i 4 0 `d 1 f 4 0 `S907 1 fAsBytes 4 0 `S912 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S915  1 a 4 64 ]
+[s S941 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S944 . 4 `l 1 i 4 0 `d 1 f 4 0 `S936 1 fAsBytes 4 0 `S941 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S944  1 a 4 64 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 58 ]
-[s S984 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S1013 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S987 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S984 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S987  1 a 2 68 ]
+[u S1016 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S1013 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S1016  1 a 2 68 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 63 ]
 "11

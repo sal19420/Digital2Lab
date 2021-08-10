@@ -25,6 +25,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> // Concatenar
 #include <pic16f887.h>
 #include "I2CL4M.h"
 #include "ADCL4.h"
@@ -42,6 +43,10 @@ float conv0 = 0;
 float conv1 = 0;
 uint8_t var_adc0 = 0;
 volatile uint8_t contador = 0;
+char STH[3];
+int8_t sensor;
+char T[10];
+
 
 //*****************************************************************************
 // Definición de funciones para que se puedan colocar después del main de lo 
@@ -57,12 +62,8 @@ void main(void) {
     Lcd_Init();
     Lcd_Clear();
     while(1){
-//        I2C_Master_Start();
-//        I2C_Master_Write(0x50);
-//        I2C_Master_Write(PORTB);
-//        I2C_Master_Stop();
-//        __delay_ms(200);
-       
+
+   
         I2C_Master_Start();
         I2C_Master_Write(0x51);
         var_adc0 = I2C_Master_Read(0);
@@ -75,10 +76,29 @@ void main(void) {
         I2C_Master_Stop();
         __delay_ms(200);
         
+        I2C_Master_Start();
+        I2C_Master_Write(0x9A);
+        I2C_Master_Write(0x00);
+        __delay_ms(100);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        
+        I2C_Master_Start();
+        __delay_ms(200);
+        I2C_Master_Write(0x9B);
+        sensor= I2C_Master_Read(0);
+        I2C_Master_Stop();
+        __delay_ms(200);
+        
+        
+        
+        
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("ADC:");
         Lcd_Set_Cursor(1, 8);
         Lcd_Write_String("CONT");
+        Lcd_Set_Cursor(1, 13);
+        Lcd_Write_String("TC");
         conv0 = 0;//se reinicia las cada ves que se inicia el proceso de enviar datos
         conv1 = 0;//tanto para la LCD como por UART.
 //------------------------Mostrar datos via UART--------------------------------
@@ -95,6 +115,10 @@ void main(void) {
         convert(cont, contador, 2);//se convierte el valor actual a un valor ASCII.
          Lcd_Set_Cursor(2, 7);
         Lcd_Write_String(cont);
+        
+        convert(T, sensor, 2);
+         Lcd_Set_Cursor(2, 13);
+        Lcd_Write_String(T);
        
         
         
@@ -123,4 +147,26 @@ void setup(void){
     OSCCONbits.SCS = 1;
     
     I2C_Master_Init(100000);        // Inicializar Comuncación I2C
+}
+int concat(int a, int b)
+{
+ 
+    char s1[20];
+    char s2[20];
+//    char s3[20]
+ 
+    // Convert both the integers to string
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+//    sprintf(s2, "%d", c);
+ 
+    // Concatenate both strings
+    strcat(s1, s2);
+ 
+    // Convert the concatenated string
+    // to integer
+    int c = atoi(s1);
+ 
+    // return the formed integer
+    return c;
 }

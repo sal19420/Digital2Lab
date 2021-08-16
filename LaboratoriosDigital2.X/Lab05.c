@@ -62,13 +62,11 @@ void __interrupt() isr(void){
         
         if (RB0 == 1){              //Verificamos cual boton se presiona
             contador++;   //Si es RB0 incrementamos
-            contador = contador & 0X0F;
             PORTA = contador;
         }
         
         if (RB1 == 1){              //Si es RB1 decrementamos
             contador--;
-            contador = contador & 0X0F;
             PORTA = contador; 
         }
         

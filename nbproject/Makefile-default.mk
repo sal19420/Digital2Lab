@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=MasterI2C.c I2CL4M.c ADCL4.c LCDL4.c LibreriasL4.c
+SOURCEFILES_QUOTED_IF_SPACED=
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/MasterI2C.p1 ${OBJECTDIR}/I2CL4M.p1 ${OBJECTDIR}/ADCL4.p1 ${OBJECTDIR}/LCDL4.p1 ${OBJECTDIR}/LibreriasL4.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/MasterI2C.p1.d ${OBJECTDIR}/I2CL4M.p1.d ${OBJECTDIR}/ADCL4.p1.d ${OBJECTDIR}/LCDL4.p1.d ${OBJECTDIR}/LibreriasL4.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=
+POSSIBLE_DEPFILES=
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/MasterI2C.p1 ${OBJECTDIR}/I2CL4M.p1 ${OBJECTDIR}/ADCL4.p1 ${OBJECTDIR}/LCDL4.p1 ${OBJECTDIR}/LibreriasL4.p1
+OBJECTFILES=
 
 # Source Files
-SOURCEFILES=MasterI2C.c I2CL4M.c ADCL4.c LCDL4.c LibreriasL4.c
+SOURCEFILES=
 
 
 
@@ -94,87 +94,7 @@ MP_PROCESSOR_OPTION=16F887
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/MasterI2C.p1: MasterI2C.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/MasterI2C.p1.d 
-	@${RM} ${OBJECTDIR}/MasterI2C.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/MasterI2C.p1 MasterI2C.c 
-	@-${MV} ${OBJECTDIR}/MasterI2C.d ${OBJECTDIR}/MasterI2C.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/MasterI2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/I2CL4M.p1: I2CL4M.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/I2CL4M.p1.d 
-	@${RM} ${OBJECTDIR}/I2CL4M.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/I2CL4M.p1 I2CL4M.c 
-	@-${MV} ${OBJECTDIR}/I2CL4M.d ${OBJECTDIR}/I2CL4M.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/I2CL4M.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ADCL4.p1: ADCL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADCL4.p1.d 
-	@${RM} ${OBJECTDIR}/ADCL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ADCL4.p1 ADCL4.c 
-	@-${MV} ${OBJECTDIR}/ADCL4.d ${OBJECTDIR}/ADCL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ADCL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCDL4.p1: LCDL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCDL4.p1.d 
-	@${RM} ${OBJECTDIR}/LCDL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDL4.p1 LCDL4.c 
-	@-${MV} ${OBJECTDIR}/LCDL4.d ${OBJECTDIR}/LCDL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCDL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LibreriasL4.p1: LibreriasL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LibreriasL4.p1.d 
-	@${RM} ${OBJECTDIR}/LibreriasL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LibreriasL4.p1 LibreriasL4.c 
-	@-${MV} ${OBJECTDIR}/LibreriasL4.d ${OBJECTDIR}/LibreriasL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LibreriasL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
-${OBJECTDIR}/MasterI2C.p1: MasterI2C.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/MasterI2C.p1.d 
-	@${RM} ${OBJECTDIR}/MasterI2C.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/MasterI2C.p1 MasterI2C.c 
-	@-${MV} ${OBJECTDIR}/MasterI2C.d ${OBJECTDIR}/MasterI2C.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/MasterI2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/I2CL4M.p1: I2CL4M.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/I2CL4M.p1.d 
-	@${RM} ${OBJECTDIR}/I2CL4M.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/I2CL4M.p1 I2CL4M.c 
-	@-${MV} ${OBJECTDIR}/I2CL4M.d ${OBJECTDIR}/I2CL4M.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/I2CL4M.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/ADCL4.p1: ADCL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADCL4.p1.d 
-	@${RM} ${OBJECTDIR}/ADCL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ADCL4.p1 ADCL4.c 
-	@-${MV} ${OBJECTDIR}/ADCL4.d ${OBJECTDIR}/ADCL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/ADCL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCDL4.p1: LCDL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCDL4.p1.d 
-	@${RM} ${OBJECTDIR}/LCDL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCDL4.p1 LCDL4.c 
-	@-${MV} ${OBJECTDIR}/LCDL4.d ${OBJECTDIR}/LCDL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCDL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LibreriasL4.p1: LibreriasL4.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LibreriasL4.p1.d 
-	@${RM} ${OBJECTDIR}/LibreriasL4.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LibreriasL4.p1 LibreriasL4.c 
-	@-${MV} ${OBJECTDIR}/LibreriasL4.d ${OBJECTDIR}/LibreriasL4.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LibreriasL4.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 endif
 
 # ------------------------------------------------------------------------------------

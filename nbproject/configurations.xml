@@ -71,6 +71,10 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="ADCL4.c" ex="true" overriding="false">
+      </item>
+      <item path="ADCL4.h" ex="true" overriding="false">
+      </item>
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
         <property key="asmlist" value="true"/>
@@ -151,6 +155,20 @@
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
       </HI-TECH-LINK>
+      <item path="I2CL4M.c" ex="true" overriding="false">
+      </item>
+      <item path="I2CL4M.h" ex="true" overriding="false">
+      </item>
+      <item path="LCDL4.c" ex="true" overriding="false">
+      </item>
+      <item path="LCDL4.h" ex="true" overriding="false">
+      </item>
+      <item path="LibreriasL4.c" ex="true" overriding="false">
+      </item>
+      <item path="LibreriasL4.h" ex="true" overriding="false">
+      </item>
+      <item path="MasterI2C.c" ex="true" overriding="false">
+      </item>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
         <property key="codecoverage.enableoutputtofile" value="false"/>

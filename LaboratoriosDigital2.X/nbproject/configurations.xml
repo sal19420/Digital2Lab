@@ -1389,7 +1389,7 @@
                   value=""/>
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Tool>
-      <item path="USART.c" ex="true" overriding="false">
+      <item path="USART.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -1399,7 +1399,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="USART.h" ex="true" overriding="false">
+      <item path="USART.h" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>

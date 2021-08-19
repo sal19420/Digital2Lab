@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h> // Concatenar
 #include"ADC.h"
+#include "USART.h"
 
 
 
@@ -37,23 +38,20 @@
 #define _tmr0_value 217
 
 //**********Variables***********
-//uint8_t canal_act = 0;
-volatile uint8_t var_adc0 = 0;
-volatile uint8_t var_adc1 = 0;
-char dato0[10];
-char adc1[10];
-float conv0 = 0;
-float conv1 = 0;
-char cen, dec, uni;
-char var;
-char con;
-uint8_t contador;
-int full;
 
+uint8_t contador;
+
+
+char ingreso, pos, total;
+char centena, decena, unidad;
+char entrante [2];
  //**********Prototipos*********
  void setup(void);
- void Eusart(void);
- void putch(char data);
+// void Eusart(void);
+// void putch(char data);
+char centenas (int dato);
+char decenas (int dato);
+char unidades (int dato);
 // Código de Interrupción 
 //*****************************************************************************
 void __interrupt() isr(void){
@@ -64,7 +62,7 @@ void __interrupt() isr(void){
             contador++;   //Si es RB0 incrementamos
             PORTA = contador;
         }
-        
+            
         if (RB1 == 1){              //Si es RB1 decrementamos
             contador--;
             PORTA = contador; 
@@ -79,15 +77,60 @@ void main(void) {
     //*************************************************************************
     // Loop infinito
     //*************************************************************************
-    while(1){
-        Eusart();
-        PORTD = full;
-        convert(dato0,contador,2);
-        
-}
+     while (1){
+        centena = centenas(PORTA);
+        decena = decenas(PORTA);
+        unidad = unidades(PORTA);
+        centena += 48;
+        decena += 48;
+        unidad += 48;
+        if (PIR1bits.RCIF == 1){ //compruebo si se introdujo un dato
+            ingreso = USART_Rx();
+            
+            if(ingreso == 's'){
+                USART_Tx(centena);
+                USART_Tx(decena);
+                USART_Tx(unidad);
+            }
+            
+            if(ingreso > 47 && ingreso < 58){
+                entrante[pos] = ingreso;
+                pos++;
+                //PORTD++;
+                if (pos > 2){
+                    pos = 0;
+                    total = (entrante[0] - 48) * 100;
+                    total +=(entrante[1] - 48) *10;
+                    total +=(entrante[2] - 48);
+                    PORTD = total;
+                    //PORTD++;
+                }
+            }
+       }
+        ingreso = 0;
+    }
     return;
 }
+
+char centenas (int dato){
+    char out = dato / 100;
+    return out;
+}
+
+char decenas (int dato){
+    char out;
+    out = (dato % 100) / 10;
+    return out;
+}
+
+char unidades (int dato){
+    char out;
+    out = (dato % 100) % 10;
+    return out;
+}
+
 void setup(void){
+    USART_Init();
     ANSEL = 0X00;
     ANSELH = 0;
     TRISA = 0;
@@ -114,6 +157,9 @@ void setup(void){
     //Configuracion Puerto B
     IOCBbits.IOCB0   = 1;       //Activamos en RB0 y RB1 la interupcion on change
     IOCBbits.IOCB1   = 1;
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0 = 1;
+    WPUBbits.WPUB1 = 1;
     
      //Configuracion de TX y RX
     TXSTAbits.SYNC  = 0;    //Modo asincrono
@@ -131,77 +177,77 @@ void setup(void){
     TXSTAbits.TXEN  = 1;    //Activamos la transmición
     
 }
-void putch(char data){
-    while (TXIF == 0);      //Esperar a que se pueda enviar un nueva caracter
-    TXREG = data;           //Transmitir un caracter
-    return;
-}
+//void putch(char data){
+//    while (TXIF == 0);      //Esperar a que se pueda enviar un nueva caracter
+//    TXREG = data;           //Transmitir un caracter
+//    return;
+//}
 
-void Eusart (void) {
-    __delay_ms(100);         //El Eusart
-   printf("\rContador en decimales: \r");
-   __delay_ms(100);
-     printf(dato0);
-   __delay_ms(100);
-   printf("\r---------------\r");
-   
- 
-    printf("Ingresar Centena: Rango(0-2)\r");
-      defensa1:  
-       while(RCIF == 0);
-        cen = RCREG -48;  
-
-       while(RCREG > '2'){ 
-           goto defensa1;
-       }
-    
-    printf("Ingresar Decenas: \r");
-      defensa2:
-        while(RCIF == 0); 
-         dec = RCREG -48; 
-
-        if(cen == 2){
-           while(RCREG > '5'){
-               goto defensa2;
-           }
-       }
-
-    printf("Ingresar Unidades: \r");
-      defensa3:
-       while(RCIF == 0); 
-        uni = RCREG - 48;
-
-       if(cen == 2 && dec == 5){
-           while(RCREG > '5'){
-               goto defensa3;
-           }
-       }
-      con = concat(cen, dec);
-      full = concat(con, uni);
-      __delay_ms(250);
-    printf("El numero elegido es: %d", full);
-
-   return;
-}
-int concat(int a, int b)
-{
- 
-    char s1[20];
-    char s2[20];
+//void Eusart (void) {
+//    __delay_ms(100);         //El Eusart
+//   printf("\rContador en decimales: \r");
+//   __delay_ms(100);
+//     printf(dato0);
+//   __delay_ms(100);
+//   printf("\r---------------\r");
+//   
+// 
+//    printf("Ingresar Centena: Rango(0-2)\r");
+//      defensa1:  
+//       while(RCIF == 0);
+//        cen = RCREG -48;  
+//
+//       while(RCREG > '2'){ 
+//           goto defensa1;
+//       }
+//    
+//    printf("Ingresar Decenas: \r");
+//      defensa2:
+//        while(RCIF == 0); 
+//         dec = RCREG -48; 
+//
+//        if(cen == 2){
+//           while(RCREG > '5'){
+//               goto defensa2;
+//           }
+//       }
+//
+//    printf("Ingresar Unidades: \r");
+//      defensa3:
+//       while(RCIF == 0); 
+//        uni = RCREG - 48;
+//
+//       if(cen == 2 && dec == 5){
+//           while(RCREG > '5'){
+//               goto defensa3;
+//           }
+//       }
+//      con = concat(cen, dec);
+//      full = concat(con, uni);
+//      __delay_ms(250);
+//    printf("El numero elegido es: %d", full);
+//
+//   return;
+//}
+//int concat(int a, int b)
+//{
+// 
+//    char s1[20];
+//    char s2[20];
 //    char s3[20]
- 
-    // Convert both the integers to string
-    sprintf(s1, "%d", a);
-    sprintf(s2, "%d", b);
+// 
+//     Convert both the integers to string
+//    sprintf(s1, "%d", a);
+//    sprintf(s2, "%d", b);
 //    sprintf(s2, "%d", c);
- 
-    // Concatenate both strings
-    strcat(s1, s2);
- 
-    // Convert the concatenated string
-    // to integer
-    int c = atoi(s1);
- 
-    // return the formed integer
-    return c;
-}
+// 
+//     Concatenate both strings
+//    strcat(s1, s2);
+// 
+//     Convert the concatenated string
+//     to integer
+//    int c = atoi(s1);
+// 
+//     return the formed integer
+//    return c;
+//}

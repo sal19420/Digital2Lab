@@ -6,85 +6,53 @@
  */
 
 
+
 #include <xc.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "USART.h"
-#define _XTAL_FREQ 8000000 
 
-void UARTInit(const uint32_t baud_rate, const uint8_t BRGH) {
-
-    if (BRGH == 0) {
-        SPBRG = _XTAL_FREQ / (64 * baud_rate) - 1;
-        TXSTAbits.BRGH = 0;
-    } else {
-        SPBRG = _XTAL_FREQ / (16 * baud_rate) - 1;
-        TXSTAbits.BRGH = 1;
-    }
-
-    // TXSTA register
-    TXSTAbits.TX9 = 0; // 8-bit transmission
-    TXSTAbits.TXEN = 1; // Enable transmission
-    TXSTAbits.SYNC = 0; // Asynchronous mode
-
-    // RCSTA register
-    RCSTAbits.SPEN = 1; // Enable serial port
-    RCSTAbits.RX9 = 0; // 8-bit reception
-    RCSTAbits.CREN = 1; // Enable continuous reception
-    RCSTAbits.FERR = 0; // Disable framing error
-    RCSTAbits.OERR = 0; // Disable overrun error
-
-    // Set up direction of RX/TX pins
-    USART_TRIS_RX = 1;
-    USART_TRIS_TX = 0;
+void USART_Init(void){
+                                //Confi. serial comunication
+    TXSTAbits.SYNC = 0;     //asincrono
+    TXSTAbits.BRGH = 1;     //high speed
+    BAUDCTLbits.BRG16 = 1;  //uso los 16 bits
+   
+    SPBRG = 207;   //revisar tabla BAUD RATES FOR ASYNCHRONOUS MODES (CONTINUED)                      
+    SPBRGH = 0;    //pagina 168 del datasheet del 2009         
+    
+    RCSTAbits.SPEN = 1;     //enciendo el modulo
+    RCSTAbits.RX9 = 0;      //No trabajo a 9 bits
+    RCSTAbits.CREN = 1;     //activo recepción
+    TXSTAbits.TXEN = 1;     //activo transmision 
 }
 
 
-void UARTSendChar(const char c) {
-    while (!TXIF); // Wait for buffer to be empty
-    TXREG = c;
+void USART_Tx(char data){       //envio de un caracter
+    while(TXSTAbits.TRMT == 0);
+    TXREG = data;
 }
 
+char USART_Rx(){                //Lectura de comunicacion serial
+    return RCREG; 
+   }
 
-void UARTSendString(const char* str, const uint8_t max_length) {
-    int i = 0;
-
-    while (str[i] !=0){
-        UARTSendChar(str[i]);
-        i++;
-        __delay_us(30);
+void USART_Cadena(char *str){   //Envio de cadena de caracteres
+    while(*str != '\0'){
+        USART_Tx(*str);
+        str++;
     }
 }
 
-
-uint8_t UARTDataReady() {
-    return PIR1bits.RCIF;
+void USART_volt(char cen, char dec, char uni){
+    cen += 48;
+    dec += 48;
+    uni += 48;
+    
+    USART_Tx(cen);
+    USART_Tx('.');
+    USART_Tx(dec);
+    USART_Tx(uni);
+    USART_Tx('V');
+    return;
 }
-
-
-char UARTReadChar() {
-    while (!UARTDataReady()); // Wait for data to be available
-    return RCREG;
-}
-
-
-uint8_t UARTReadString(char *buf, uint8_t max_length) {
-    uint8_t i = 0;
-    char tmp = 1;
-    for (i = 0; i < max_length - 1; i++) {
-        tmp = UARTReadChar();
-        // Stop reading if end of string is read
-        if (tmp == '\0' || tmp == '\n' || tmp == '\r') {
-            break;
-        }
-        buf[i] = tmp;
-    }
-
-    buf[i + 1] = '\0';
-
-    return i;
-}
-
 
   

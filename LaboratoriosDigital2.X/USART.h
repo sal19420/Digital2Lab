@@ -10,21 +10,24 @@
 // more than once.  
 #ifndef USART_H
 #define	USART_H
-#include <xc.h>
+
+#include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
-#define _XTAL_FREQ  8000000
+#include <pic16f887.h>
+// 
 
-// Definimos pines 
-#define USART_TRIS_RX  TRISCbits.TRISC7
-#define USART_TRIS_TX  TRISCbits.TRISC6
+//VARIABLES
 
 
-void UARTInit(const uint32_t baud_rate, const uint8_t BRGH);
-void UARTSendChar(const char c);     //mandamos el dato 
-void UARTSendString(const char* str, const uint8_t max_length);
-uint8_t UARTDataReady();    
-char UARTReadChar();
-uint8_t UARTReadString(char *buf, uint8_t max_length);
+//FUNCIONES
+void USART_Init(void);
+void USART_Tx(char data);
+char USART_Rx(void);
+void USART_Cadena(char *str);
+void USART_volt(char cen, char dec, char uni);
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+//MACRO
+ //#define tmr0_value 60
 
+
+#endif	/* UART_H */

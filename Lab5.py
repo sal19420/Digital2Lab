@@ -24,7 +24,7 @@ dev = serial.Serial("COM3",9600)
 dev.timeout = 3 #tiempo de espera para recibir datos
 time.sleep(1) #para que establezca conexion
 
-ADAFRUIT_IO_KEY = "aio_tpbx09bGDl4CMan8a3YiBOi7tdw7"
+ADAFRUIT_IO_KEY = "aio_tkeZ37UwpsJNBsLPXLpUTO3fdXlv"
 ADAFRUIT_IO_USERNAME = "Josuech"
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
